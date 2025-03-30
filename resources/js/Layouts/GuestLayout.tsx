@@ -12,7 +12,7 @@ export default function Guest({ children }: PropsWithChildren) {
             </div>
 
             <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg">
-                {children}
+                {children} TEST
             </div>
         </div>
     );
