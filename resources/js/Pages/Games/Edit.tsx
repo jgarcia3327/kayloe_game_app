@@ -1,12 +1,17 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import UpdateGameForm from "./Partials/UpdateGameForm";
+import GameLayout from "@/Layouts/GameLayout";
+import { AuthProps, GameProps } from "@/types";
 
-export default function Edit({ auth, game }:any) {
+export default function Edit({ auth, game }:{
+    auth: AuthProps,
+    game: GameProps
+}) {
     return (
-        <AuthenticatedLayout
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Order #{game.id}</h2>}
-        >
+        <GameLayout
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Game ID: {game.id}</h2>}    
+            auth={auth}     
+            >
             <Head title={'Game ID: ' + game.id} />
 
             <div className="py-12"> 
@@ -15,11 +20,11 @@ export default function Edit({ auth, game }:any) {
                         <UpdateGameForm
                             auth={auth}
                             game={game}
-                            className="max-w-xl"
+                            className="max-w-full"
                         />
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </GameLayout>
     );
 }

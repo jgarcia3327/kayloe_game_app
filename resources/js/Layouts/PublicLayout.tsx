@@ -46,7 +46,7 @@ export default function Authenticated({
                                                 type="button"
                                                 className="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
                                             >
-                                                Guest
+                                                {user? <strong>{user.name}</strong>:<strong>Guest</strong>}
                                                 <svg
                                                     className="-me-0.5 ms-2 h-4 w-4"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -64,13 +64,32 @@ export default function Authenticated({
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
+                                        {user? <>
+                                            <Dropdown.Link
+                                                href={route('dashboard')}
+                                            >
+                                                Dashboard
+                                            </Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route('profile.edit')}
+                                            >
+                                                Profile
+                                            </Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route('logout')}
+                                                method="post"
+                                                as="button"
+                                            >
+                                                Log Out
+                                            </Dropdown.Link>
+                                        </>:
                                         <Dropdown.Link
                                             href={route('login')}
                                             method="get"
                                             as="button"
                                         >
                                             Log In
-                                        </Dropdown.Link>
+                                        </Dropdown.Link>}
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>
@@ -135,20 +154,49 @@ export default function Authenticated({
                     </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4">
-                        <div className="px-4">
-                            <div className="text-base font-medium text-gray-800">
-                                Guest
+                        {user? <>
+                            <div className="px-4">
+                                <div className="text-base font-medium text-gray-800">
+                                    {user.name}
+                                </div>
+                                <div className="text-sm font-medium text-gray-500">
+                                    {user.email}
+                                </div>
                             </div>
-                        </div>
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink
-                                method="get"
-                                href={route('login')}
-                                as="button"
-                            >
-                                Log In
-                            </ResponsiveNavLink>
-                        </div>
+    
+                            <div className="mt-3 space-y-1">
+                                <ResponsiveNavLink href={route('dashboard')}>
+                                    Dashboard
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href={route('profile.edit')}>
+                                    Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink
+                                    method="post"
+                                    href={route('logout')}
+                                    as="button"
+                                >
+                                    Log Out
+                                </ResponsiveNavLink>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className="px-4">
+                                <div className="text-base font-medium text-gray-800">
+                                    Guest
+                                </div>
+                            </div>
+                            <div className="mt-3 space-y-1">
+                                <ResponsiveNavLink
+                                    method="get"
+                                    href={route('login')}
+                                    as="button"
+                                >
+                                    Log In
+                                </ResponsiveNavLink>
+                            </div>
+                        </>}
                     </div>
                 </div>
             </nav>

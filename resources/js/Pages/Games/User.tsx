@@ -1,16 +1,18 @@
-import GameBox from "@/Components/GameBox";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import GameBox from "@/Pages/Games/Partials/GameBox";
 import { Head } from "@inertiajs/react";
+import GameLayout from "@/Layouts/GameLayout";
+import { HomeProps } from "@/types";
 
-export default function User({ auth, user, games }:any) {
+export default function User({ auth, games }:HomeProps) {
 
     return (
-        <AuthenticatedLayout
+        <GameLayout
             header={
                 <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    {user.name}'s' Games
+                    {auth.user.name}'s' Games
                 </h2>
             }
+            auth={auth}
         >
             <Head title="Dashboard" />
 
@@ -21,6 +23,6 @@ export default function User({ auth, user, games }:any) {
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </GameLayout>
     );
 }

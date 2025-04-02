@@ -2,26 +2,24 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextAreaInput from '@/Components/TextAreaInput';
 import TextInput from '@/Components/TextInput';
-import { AuthProps, GameProps } from '@/types';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 
-export default function UpdateGameForm({ auth, game, className = '' }:{
-    auth: AuthProps;
-    game: GameProps;
+export default function CreateGameForm({className=''}:{
     className: string;
 }) {
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
-        title: game.title,
-        description: game.description,
-        image: game.image
-    });
+    const { data, setData, post, errors, processing, recentlySuccessful } = useForm({
+            title: "",
+            description: "",
+            image: ""
+        });
+    
 
     const submit = (e:any) => {
         e.preventDefault();
 
-        patch(route('games.update', game.id));
+        post(route('games.store'));
     };
 
     return (
@@ -64,29 +62,21 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                         id="image"
                         className="mt-1 block w-full"
                         value={data.image}
-                        disabled
+                        onChange={(e) => setData('image', e.target.value)}
                     />
                 </div>
 
-                <div className="grid items-center gap-4 w-full">
-                    {auth.user.id === game.user_id ? 
-                        <div className="grid grid-cols-2">
-                            <PrimaryButton className="col-span-1 mr-3" disabled={processing}>Save Changes</PrimaryButton> 
-                            <a className="inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md ml-3 items-center border border-transparent text-sm font-semibold uppercase" href = {route('question.add', game.id)}>
-                                Add Question
-                            </a>
-                            <Transition
-                                show={recentlySuccessful}
-                                enter="transition ease-in-out"
-                                enterFrom="opacity-0"
-                                leave="transition ease-in-out"
-                                leaveTo="opacity-0"
-                            >
-                                <p className="mt-3 col-span-1 block center w-full text-md text-green-600 uppercase">Saved.</p>
-                            </Transition>
-                        </div>
-                        : <></>
-                    }
+                <div className="flex items-center gap-4">
+                    <PrimaryButton disabled={processing}>Create</PrimaryButton> 
+                    <Transition
+                        show={recentlySuccessful}
+                        enter="transition ease-in-out"
+                        enterFrom="opacity-0"
+                        leave="transition ease-in-out"
+                        leaveTo="opacity-0"
+                    >
+                        <p className="text-sm text-gray-600">Created.</p>
+                    </Transition>
                 </div>
             </form>
         </section>

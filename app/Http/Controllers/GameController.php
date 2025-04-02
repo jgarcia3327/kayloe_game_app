@@ -14,20 +14,29 @@ class GameController extends Controller
 {
     public function home(): Response
     {
-        $games = Game::all();
-
+        $games = Game::orderBy('created_at', 'DESC')->get();
+    
         return Inertia::render('Home', [
-            'games' => $games
+            'games' => $games,
+            'isLoggedIn' => Auth::check()
         ]);
     }
 
     public function index(): Response
     {
-        $games = Game::all();
+        $games = Game::orderBy('created_at', 'DESC')->get();
 
         return Inertia::render('Games/All', [
             'games' => $games
         ]);
+    }
+
+    public function create(): Response
+    {
+        if (!Auth::check())
+            return Inertia::render('/');
+
+        return Inertia::render('Games/Create');
     }
 
     public function edit(Game $game): Response
@@ -47,6 +56,21 @@ class GameController extends Controller
         }
     }
 
+    public function store(Request $request): Response
+    {
+        if (!Auth::check())
+            return Inertia::render('/');
+
+        $game = Game::create([
+            'user_id' => Auth::user()->id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $request->image
+        ]);
+        
+        return $this->edit($game);
+    }
+
     public function user(User $user): Response
     {
         $games = Game::where('user_id', $user->id)->get();
@@ -57,9 +81,9 @@ class GameController extends Controller
         ]);
     }
 
-    public function me_games(): Response
+    public function my_games(): Response
     {
-        $games = Game::where('user_id', Auth::user()->id)->get();
+        $games = Game::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
         return Inertia::render('Games/MyGames', [
             'games' => $games

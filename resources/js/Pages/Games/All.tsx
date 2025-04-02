@@ -1,17 +1,18 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { PageProps } from "@/types";
+import { HomeProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import GameBox from "@/Components/GameBox";
+import GameBox from "@/Pages/Games/Partials/GameBox";
+import GameLayout from "@/Layouts/GameLayout";
 
-export default function All({ auth, games }:PageProps) {
+export default function All({ auth, games }:HomeProps) {
 
     return (
-        <AuthenticatedLayout
+        <GameLayout
             header={
                 <h2 className="text-xl font-semibold leading-tight text-gray-800">
                     All Games
                 </h2>
             }
+            auth={auth}
         >
             <Head title="Dashboard" />
 
@@ -22,6 +23,6 @@ export default function All({ auth, games }:PageProps) {
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </GameLayout>
     );
 }

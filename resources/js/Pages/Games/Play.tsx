@@ -1,13 +1,18 @@
-import PublicLayout from "@/Layouts/PublicLayout";
+import GameLayout from "@/Layouts/GameLayout";
+import { AuthProps, GameProps } from "@/types";
 
-export default function Play({game}:any) {
+export default function Play({auth, game}: {
+    auth: AuthProps;
+    game: GameProps;
+}) {
     return (
-        <PublicLayout
-                    header={
-                        <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                            {game.title}
-                        </h2>
-                    }
+        <GameLayout
+            auth = {auth}
+            header={
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                        {game.title}
+                    </h2>
+            }
                 >
             <div className="py-12"> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -17,6 +22,6 @@ export default function Play({game}:any) {
                     </div>
                 </div>
             </div>
-        </PublicLayout>
+        </GameLayout>
     );
 }
