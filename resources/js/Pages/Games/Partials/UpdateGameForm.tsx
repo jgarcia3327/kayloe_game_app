@@ -9,7 +9,7 @@ import { useForm } from '@inertiajs/react';
 export default function UpdateGameForm({ auth, game, className = '' }:{
     auth: AuthProps;
     game: GameProps;
-    className: string;
+    className?: string;
 }) {
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
@@ -25,7 +25,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
     };
 
     return (
-        <section className={className}>
+        <section className={'max-w-full ' + className}>
             <header>
                 <h2 className="text-lg font-medium text-gray-900">Game Information</h2>
 
@@ -72,7 +72,10 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                     {auth.user.id === game.user_id ? 
                         <div className="grid grid-cols-2">
                             <PrimaryButton className="col-span-1 mr-3" disabled={processing}>Save Changes</PrimaryButton> 
-                            <a className="inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md ml-3 items-center border border-transparent text-sm font-semibold uppercase" href = {route('question.add', game.id)}>
+                            <a 
+                                href = {route('game.question.create', game.id)}
+                                className="inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md ml-3 items-center border border-transparent text-sm font-semibold uppercase" 
+                            >
                                 Add Question
                             </a>
                             <Transition

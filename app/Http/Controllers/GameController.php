@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Choice;
 use App\Models\Game;
+use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +43,14 @@ class GameController extends Controller
 
     public function edit(Game $game): Response
     {
+
+        $questions = Question::where('game_id', $game->id)->get();
+        $choices = Choice::whereIn('question_id', $questions->pluck('id'))->get();
+
         return Inertia::render('Games/Edit', [
             'game' => $game,
+            'questions' => $questions,
+            'choices' => $choices
         ]);
     }
 

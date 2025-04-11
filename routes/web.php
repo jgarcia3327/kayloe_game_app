@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\GameController;
-use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\GameQuestionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,7 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/games/{game}', [GameController::class, 'update'])->name('games.update');
     Route::post('/games', [GameController::class, 'store'])->name('games.store');
 
-    Route::get('/questions/{game}', [QuestionController::class, 'add'])->name('question.add');
+    Route::get('/game/question/{game}', [GameQuestionController::class, 'create'])->name('game.question.create');
+    Route::post('/game/question', [GameQuestionController::class, 'store'])->name('game.question.store');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
