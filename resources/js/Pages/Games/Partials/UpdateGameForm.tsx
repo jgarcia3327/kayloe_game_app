@@ -76,7 +76,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                                 href = {route('game.question.create', game.id)}
                                 className="inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md ml-3 items-center border border-transparent text-sm font-semibold uppercase" 
                             >
-                                Add Question
+                                Add New Question
                             </a>
                             <Transition
                                 show={recentlySuccessful}

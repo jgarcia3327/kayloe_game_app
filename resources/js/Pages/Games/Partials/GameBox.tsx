@@ -24,7 +24,7 @@ export default function GameBox({ auth, games }:{
                             <div className="grid grid-cols-2 w-full pt-8">
                                 {auth.user && game.user_id === auth.user.id ? 
                                 <>
-                                    <a className="mr-3 col-span-1 text-center bg-red-400 rounded-md" href={route("public.play.game", game.id).toString()}>Play</a>
+                                    <a className="mr-3 col-span-1 text-center bg-red-400 rounded-md" href={route("public.play.game", game.id)}>Play</a>
                                     <a className="ml-3 cols-span-1 text-center bg-green-300 rounded-md" href={route('games.edit', game.id)}>Edit</a>
                                 </>
                                 :

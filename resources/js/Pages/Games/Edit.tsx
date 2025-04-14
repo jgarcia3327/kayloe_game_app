@@ -1,14 +1,13 @@
 import { Head } from "@inertiajs/react";
 import UpdateGameForm from "./Partials/UpdateGameForm";
 import GameLayout from "@/Layouts/GameLayout";
-import { AuthProps, ChoiceProps, GameProps, QuestionProps } from "@/types";
+import { AuthProps, GameProps, QuestionsWithChoicesProps } from "@/types";
 import QuestionBox from "./Partials/QuestionBox";
 
-export default function Edit({ auth, game, questions, choices }:{
+export default function Edit({ auth, game, questionsWithChoices }:{
     auth: AuthProps,
     game: GameProps,
-    questions: QuestionProps,
-    choices: ChoiceProps
+    questionsWithChoices: QuestionsWithChoicesProps,
 }) {
 
     return (
@@ -31,8 +30,7 @@ export default function Edit({ auth, game, questions, choices }:{
                         <QuestionBox 
                             auth={auth}
                             game={game}
-                            questions={questions}
-                            choices={choices}
+                            questionsWithChoices={questionsWithChoices}
                         />
                     </div>
                 </div>

@@ -57,3 +57,8 @@ export interface Choice {
 }
 
 export type ChoiceProps = Choice;
+
+export type QuestionsWithChoicesProps = {
+    question: QuestionProps;
+    choices: ChoiceProps;
+}

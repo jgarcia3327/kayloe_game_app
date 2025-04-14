@@ -9,6 +9,7 @@ use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -33,10 +34,10 @@ class GameController extends Controller
         ]);
     }
 
-    public function create(): Response
+    public function create()
     {
         if (!Auth::check())
-            return Inertia::render('/');
+            return redirect()->route('home');
 
         return Inertia::render('Games/Create');
     }
@@ -45,13 +46,20 @@ class GameController extends Controller
     {
 
         $questions = Question::where('game_id', $game->id)->get();
-        $choices = Choice::whereIn('question_id', $questions->pluck('id'))->get();
+
+        $questionsWithChoices = [];
+        foreach ($questions AS $q) {
+            array_push($questionsWithChoices, (object)array(
+                'question' => $q,
+                'choices' => Choice::where('question_id', $q->id)->get()
+            ));
+        }
 
         return Inertia::render('Games/Edit', [
             'game' => $game,
-            'questions' => $questions,
-            'choices' => $choices
+            'questionsWithChoices' => $questionsWithChoices
         ]);
+
     }
 
     public function update(Game $game, Request $request): void
@@ -64,10 +72,10 @@ class GameController extends Controller
         }
     }
 
-    public function store(Request $request): Response
+    public function store(Request $request)
     {
         if (!Auth::check())
-            return Inertia::render('/');
+            return redirect(route('home'));
 
         $game = Game::create([
             'user_id' => Auth::user()->id,

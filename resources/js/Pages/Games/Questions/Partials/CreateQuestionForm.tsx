@@ -5,23 +5,27 @@ import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import CreateChoiceForm from './CreateChoiceForm';
 import TextAreaInput from '@/Components/TextAreaInput';
-import { GameProps } from '@/types';
+import { ChoiceProps, GameProps, QuestionProps } from '@/types';
+import EditChoiceForm from './EditChoiceForm';
 
-export default function CreateQuestionForm({game, className=''}:{
+export default function CreateQuestionForm({game, question, choices, className=''}:{
     game: GameProps,
+    question?: QuestionProps,
+    choices?: ChoiceProps,
     className?:string
 }) {
 
     let choiceObj = {
         description: "",
         image: "",
-        is_correct: false
+        is_correct: false,
+        id: null
     }
 
-    const { data, setData, post, errors, processing, recentlySuccessful } = useForm({
+    const { data, setData, post, patch, errors, processing, recentlySuccessful } = useForm({
             gameId: game.id,
-            question: "",
-            image: "",
+            question: question? question.question : "",
+            image: question? question.image : "",
             correctPercent: 100,
             choices: [choiceObj]
         });
@@ -32,7 +36,6 @@ export default function CreateQuestionForm({game, className=''}:{
         // Parse choices using useFieldArray from CreateChoiceForm
         let formData = new FormData(e.target);
         let objEntries = Object.fromEntries(formData.entries());
-        console.log(objEntries);
         let newChoices = [];
         let count=0;
         for (const [key, value] of Object.entries(objEntries)) {
@@ -40,6 +43,7 @@ export default function CreateQuestionForm({game, className=''}:{
                 if(key.toLowerCase().includes('description')) choiceObj.description = value.toString();
                 if(key.toLowerCase().includes('image')) choiceObj.image = value.toString();
                 if(key.toLowerCase().includes('is_correct')) choiceObj.is_correct = (value.toString() === 'on');
+                if(key.toLowerCase().includes('id')) choiceObj.id = parseInt(value.toString());
             }
             else {
                 count++;
@@ -48,7 +52,8 @@ export default function CreateQuestionForm({game, className=''}:{
                 choiceObj = {
                     description: "",
                     image: "",
-                    is_correct: false
+                    is_correct: false,
+                    id: null
                 }
                 // Add first/prior occurence
                 if(key.toLowerCase().includes('description')) choiceObj.description = value.toString();
@@ -58,14 +63,16 @@ export default function CreateQuestionForm({game, className=''}:{
         data.gameId = game.id;
         data.choices = newChoices;
         
-
-        post(route('game.question.store'));
+        if (question && choices)
+            patch(route('game.question.update', question.id));
+        else
+            post(route('game.question.store'));
     };
 
     return (
         <section className={'max-w-full ' + className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">Question</h2>
+                <h2 className="text-lg font-medium text-gray-900"><a className='' href={route("games.edit", game.id)}>&lt; {game.title}</a> | Question</h2>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
@@ -106,20 +113,39 @@ export default function CreateQuestionForm({game, className=''}:{
                 </div>
 
                 <div>
-                    <CreateChoiceForm/>
+                    {choices? 
+                        <EditChoiceForm choices={choices}/> 
+                        : <CreateChoiceForm/>
+                    }
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Create Question</PrimaryButton> 
-                    <Transition
-                        show={recentlySuccessful}
-                        enter="transition ease-in-out"
-                        enterFrom="opacity-0"
-                        leave="transition ease-in-out"
-                        leaveTo="opacity-0"
-                    >
-                        <p className="text-sm text-gray-600">Created.</p>
-                    </Transition>
+                    {choices? 
+                    <>
+                        <PrimaryButton disabled={processing}>Update Question</PrimaryButton> 
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out"
+                            enterFrom="opacity-0"
+                            leave="transition ease-in-out"
+                            leaveTo="opacity-0"
+                        >
+                            <p className="text-sm text-gray-600">Created.</p>
+                        </Transition>
+                    </> 
+                    : 
+                    <>
+                        <PrimaryButton disabled={processing}>Create Question</PrimaryButton> 
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out"
+                            enterFrom="opacity-0"
+                            leave="transition ease-in-out"
+                            leaveTo="opacity-0"
+                        >
+                            <p className="text-sm text-gray-600">Created.</p>
+                        </Transition>
+                    </>}
                 </div>
             </form>
         </section>
