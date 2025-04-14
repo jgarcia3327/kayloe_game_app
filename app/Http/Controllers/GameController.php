@@ -46,7 +46,6 @@ class GameController extends Controller
     {
 
         $questions = Question::where('game_id', $game->id)->get();
-
         $questionsWithChoices = [];
         foreach ($questions AS $q) {
             array_push($questionsWithChoices, (object)array(
@@ -60,6 +59,20 @@ class GameController extends Controller
             'questionsWithChoices' => $questionsWithChoices
         ]);
 
+    }
+
+    public function delete(Game $game)
+    {
+
+        if (Auth::check() && $game->user_id === Auth::user()->id) {
+            // Delete questions and choices
+            $questions = Question::where('game_id', $game->id);
+            Choice::whereIn('question_id', $questions->get()->pluck('id'))->delete();
+            $questions->delete();
+            $game->delete();
+        }
+
+        return redirect()->route('my.games');
     }
 
     public function update(Game $game, Request $request): void

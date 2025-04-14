@@ -12,7 +12,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
     className?: string;
 }) {
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
+    const { data, setData, patch, delete: destroy, errors, processing, recentlySuccessful } = useForm({
         title: game.title,
         description: game.description,
         image: game.image
@@ -21,8 +21,16 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
     const submit = (e:any) => {
         e.preventDefault();
 
-        patch(route('games.update', game.id));
+        patch(route('game.update', game.id));
     };
+
+    const handleDelete = (e:any, game: GameProps) => {
+        e.preventDefault();
+        let c = confirm("Confirm Delete:\n" + game.title);
+        if (c === true) {
+            destroy(route('game.delete', game.id));
+        }
+    }
 
     return (
         <section className={'max-w-full ' + className}>
@@ -70,13 +78,19 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
 
                 <div className="grid items-center gap-4 w-full">
                     {auth.user.id === game.user_id ? 
-                        <div className="grid grid-cols-2">
-                            <PrimaryButton className="col-span-1 mr-3" disabled={processing}>Save Changes</PrimaryButton> 
+                        <div className="grid grid-cols-3 gap-4">
+                            <PrimaryButton className="col-span-1" disabled={processing}>Save Changes</PrimaryButton> 
                             <a 
                                 href = {route('game.question.create', game.id)}
-                                className="inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md ml-3 items-center border border-transparent text-sm font-semibold uppercase" 
+                                className="inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
                             >
                                 Add New Question
+                            </a>
+                            <a 
+                                onClick = {(e) => handleDelete(e, game)}
+                                className="cursor-pointer inline-flex px-4 py-2 col-span-1 ml-6 bg-red-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
+                            >
+                                Delete game
                             </a>
                             <Transition
                                 show={recentlySuccessful}

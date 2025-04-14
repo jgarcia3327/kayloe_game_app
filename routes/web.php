@@ -20,13 +20,14 @@ Route::middleware('auth')->group(function () {
 
     // Game view
     Route::get('/games', [GameController::class, 'index'])->name('games.index');
-    Route::get('games/create', [GameController::class, 'create'])->name('games.create');
-    Route::get('/games/edit/{game}', [GameController::class, 'edit'])->name('games.edit');
+    Route::get('games/create', [GameController::class, 'create'])->name('game.create');
+    Route::get('/games/edit/{game}', [GameController::class, 'edit'])->name('game.edit');
     Route::get('/games/user/{user}', [GameController::class, 'user'])->name('games.user');
-    Route::get('/games/my/games', [GameController::class, 'my_games'])->name('games.my.games');
+    Route::get('/games/my/games', [GameController::class, 'my_games'])->name('my.games');
     // Game process(void)
-    Route::patch('/games/{game}', [GameController::class, 'update'])->name('games.update');
-    Route::post('/games', [GameController::class, 'store'])->name('games.store');
+    Route::patch('/games/{game}', [GameController::class, 'update'])->name('game.update');
+    Route::delete('/games/{game}', [GameController::class, 'delete'])->name('game.delete');
+    Route::post('/games', [GameController::class, 'store'])->name('game.store');
 
     // Question view
     Route::get('/game/question/{game}', [GameQuestionController::class, 'create'])->name('game.question.create');

@@ -19,7 +19,7 @@ export default function CreateGameForm({className=''}:{
     const submit = (e:any) => {
         e.preventDefault();
 
-        post(route('games.store'));
+        post(route('game.store'));
     };
 
     return (

@@ -40,8 +40,8 @@ export default function Authenticated({
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    href={route('games.my.games')}
-                                    active={route().current('games.my.*')}
+                                    href={route('my.games')}
+                                    active={route().current('my.*')}
                                 >
                                     My Games
                                 </NavLink>

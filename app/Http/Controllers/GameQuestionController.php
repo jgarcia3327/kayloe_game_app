@@ -44,14 +44,10 @@ class GameQuestionController extends Controller
 
     public function delete(Question $question): void
     {
-        if (Auth::check())
-
-        // Get game
         $game = Game::where('id', $question->game_id)->first();
         if (Auth::check() && $game->user_id === Auth::user()->id) {
             $question->delete();
         }
-
     }
 
     public function update(Question $question, Request $request)
