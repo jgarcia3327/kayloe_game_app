@@ -33,6 +33,7 @@ export default function Play({auth, game, questionsWithChoices}: {
                         <p className="text-xl">{game.description}</p>
                         <p className="mt-4">Passing percentage: {game.passing_percent}</p>
                         <p className="mt-4">Number of questions: {questionsWithChoices.length}</p>
+                        <p>Game time: {game.time_in_sec}</p>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
                         <PrimaryButton className="col-span-1 col-start-2 text-center inline-grid bg-green-900" disabled={processing}>Start</PrimaryButton> 
