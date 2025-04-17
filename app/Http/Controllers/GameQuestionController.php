@@ -87,7 +87,7 @@ class GameQuestionController extends Controller
             }
         }
 
-        return redirect()->route('games.edit', [$request->gameId]);
+        return redirect()->route('game.edit', [$request->gameId]);
         
     }
 
@@ -114,7 +114,7 @@ class GameQuestionController extends Controller
             ]);
         }
 
-        return redirect()->route('games.edit', [$request->gameId]);
+        return redirect()->route('game.edit', [$request->gameId]);
         
     }
 }

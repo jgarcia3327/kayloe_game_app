@@ -39,18 +39,18 @@ export default function EditChoiceForm({choices, className=''}:{
                         </button>
                         <div>
                             <InputLabel htmlFor={`choice.${index}.description`} value="Description" />
-                            <input {...register(`choice.${index}.description`)} />
+                            <input {...register(`choice.${index}.description`)} className="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 mt-1 block w-full"/>
                             <input {...register(`choice.${index}.id`)} type="hidden"/>
                         </div>
             
                         <div>
-                            <InputLabel htmlFor={`choice.${index}.image`} value="Image" />
-                            <input {...register(`choice.${index}.image`)} />
+                            <InputLabel htmlFor={`choice.${index}.image`} value="Image"/>
+                            <input {...register(`choice.${index}.image`)} className="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 mt-1 block w-full"/>
                         </div> 
             
                         <div className="mt-2">
                             <InputLabel htmlFor={`choice.${index}.is_correct`} value="Is Correct?" className="inline" />
-                            <input {...register(`choice.${index}.is_correct`)} type="checkbox" />
+                            <input {...register(`choice.${index}.is_correct`)} type="checkbox" className="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 ml-3"/>
                         </div>
                     </div>
                 )

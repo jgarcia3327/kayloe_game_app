@@ -4,7 +4,7 @@ import { useForm } from "@inertiajs/react";
 export default function QuestionBox({ auth, game, questionsWithChoices }:{
     auth: AuthProps;
     game: GameProps;
-    questionsWithChoices: QuestionsWithChoicesProps;
+    questionsWithChoices: [QuestionsWithChoicesProps];
 }) {
 
     const { delete: destroy } = useForm({

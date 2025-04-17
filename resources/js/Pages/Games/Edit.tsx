@@ -7,7 +7,7 @@ import QuestionBox from "./Partials/QuestionBox";
 export default function Edit({ auth, game, questionsWithChoices }:{
     auth: AuthProps,
     game: GameProps,
-    questionsWithChoices: QuestionsWithChoicesProps,
+    questionsWithChoices: [QuestionsWithChoicesProps],
 }) {
 
     return (

@@ -27,6 +27,7 @@ export interface Game {
     title: string;
     description: string;
     image: string;
+    passing_percent: number;
 }
 
 export type GameProps = Game;

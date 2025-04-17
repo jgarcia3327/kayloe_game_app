@@ -78,17 +78,17 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
 
                 <div className="grid items-center gap-4 w-full">
                     {auth.user.id === game.user_id ? 
-                        <div className="grid grid-cols-3 gap-4">
-                            <PrimaryButton className="col-span-1" disabled={processing}>Save Changes</PrimaryButton> 
+                        <div className="grid grid-cols-6 gap-4">
+                            <PrimaryButton className="col-span-2" disabled={processing}>Save Changes</PrimaryButton> 
                             <a 
                                 href = {route('game.question.create', game.id)}
-                                className="inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
+                                className="inline-flex px-4 py-2 col-span-2 bg-green-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
                             >
                                 Add New Question
                             </a>
                             <a 
                                 onClick = {(e) => handleDelete(e, game)}
-                                className="cursor-pointer inline-flex px-4 py-2 col-span-1 ml-6 bg-red-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
+                                className="cursor-pointer inline-flex px-4 py-2 col-span-1 col-end-7 bg-red-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
                             >
                                 Delete game
                             </a>

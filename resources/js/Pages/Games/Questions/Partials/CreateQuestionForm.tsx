@@ -72,7 +72,7 @@ export default function CreateQuestionForm({game, question, choices, className='
     return (
         <section className={'max-w-full ' + className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900"><a className='' href={route("games.edit", game.id)}>&lt; {game.title}</a> | Question</h2>
+                <h2 className="text-lg font-medium text-gray-900"><a className='' href={route("game.edit", game.id)}>&lt; {game.title}</a> | Question</h2>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">

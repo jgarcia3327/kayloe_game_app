@@ -1,10 +1,23 @@
+import PrimaryButton from "@/Components/PrimaryButton";
 import GameLayout from "@/Layouts/GameLayout";
-import { AuthProps, GameProps } from "@/types";
+import { AuthProps, GameProps, QuestionsWithChoicesProps } from "@/types";
+import { Transition } from "@headlessui/react";
+import { useForm } from "@inertiajs/react";
 
-export default function Play({auth, game}: {
+export default function Play({auth, game, questionsWithChoices}: {
     auth: AuthProps;
     game: GameProps;
+    questionsWithChoices: [QuestionsWithChoicesProps];
 }) {
+    
+    const { data, setData, patch, delete: destroy, errors, processing, recentlySuccessful } = useForm({
+        // TODO
+    });
+
+    const submit = (e:any) => {
+        // TODO
+    };
+
     return (
         <GameLayout
             auth = {auth}
@@ -17,8 +30,21 @@ export default function Play({auth, game}: {
             <div className="py-12"> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <h2>{game.title}</h2>
-                        <p>{game.description}</p>
+                        <p className="text-xl">{game.description}</p>
+                        <p className="mt-4">Passing percentage: {game.passing_percent}</p>
+                        <p className="mt-4">Number of questions: {questionsWithChoices.length}</p>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4">
+                        <PrimaryButton className="col-span-1 col-start-2 text-center inline-grid bg-green-900" disabled={processing}>Start</PrimaryButton> 
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out"
+                            enterFrom="opacity-0"
+                            leave="transition ease-in-out"
+                            leaveTo="opacity-0"
+                        >
+                            <p className="mt-3 col-span-1 block center w-full text-md text-green-600 uppercase">Saved.</p>
+                        </Transition>
                     </div>
                 </div>
             </div>

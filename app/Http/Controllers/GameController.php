@@ -44,19 +44,9 @@ class GameController extends Controller
 
     public function edit(Game $game): Response
     {
-
-        $questions = Question::where('game_id', $game->id)->get();
-        $questionsWithChoices = [];
-        foreach ($questions AS $q) {
-            array_push($questionsWithChoices, (object)array(
-                'question' => $q,
-                'choices' => Choice::where('question_id', $q->id)->get()
-            ));
-        }
-
         return Inertia::render('Games/Edit', [
             'game' => $game,
-            'questionsWithChoices' => $questionsWithChoices
+            'questionsWithChoices' => $this->getQuestionsWithChoices($game)
         ]);
 
     }
@@ -120,9 +110,23 @@ class GameController extends Controller
     }
 
     public function play(Game $game): Response
-    {
+    { 
         return Inertia::render('Games/Play', [
-            'game' => $game
+            'game' => $game,
+            'questionsWithChoices' => $this->getQuestionsWithChoices($game)
         ]);
+    }
+
+    private function getQuestionsWithChoices(Game $game) {
+        $questions = Question::where('game_id', $game->id)->get();
+        $questionsWithChoices = [];
+        foreach ($questions AS $q) {
+            array_push($questionsWithChoices, (object)array(
+                'question' => $q,
+                'choices' => Choice::where('question_id', $q->id)->get()
+            ));
+        }
+
+        return $questionsWithChoices;
     }
 }
