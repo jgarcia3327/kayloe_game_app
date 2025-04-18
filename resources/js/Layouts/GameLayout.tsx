@@ -8,10 +8,10 @@ export default function GameLayout({
     auth, 
     header,
     children
-}:PropsWithChildren<{auth: AuthProps, header?: ReactNode}>) {
+}:PropsWithChildren<{auth?: AuthProps, header?: ReactNode}>) {
     return (
         <>
-        {auth.user? (
+        {auth?.user? (
             <AuthenticatedLayout
                 header={header}
             >

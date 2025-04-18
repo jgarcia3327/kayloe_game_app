@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Choice;
 use App\Models\Game;
+use App\Models\PlayedGame;
+use App\Models\PlayedQuestion;
 use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -54,7 +56,7 @@ class GameController extends Controller
     public function delete(Game $game)
     {
 
-        if (Auth::check() && $game->user_id === Auth::user()->id) {
+        if ($game->user_id === Auth::user()->id) {
             // Delete questions and choices
             $questions = Question::where('game_id', $game->id);
             Choice::whereIn('question_id', $questions->get()->pluck('id'))->delete();
@@ -112,7 +114,53 @@ class GameController extends Controller
     { 
         return Inertia::render('Games/Play', [
             'game' => $game,
-            'questionsWithChoices' => $this->getQuestionsWithChoices($game)
+            'questionLength' => Question::where('game_id', $game->id)->count()
+        ]);
+    }
+
+    public function startPlay(Game $game): Response
+    {
+        // Get played game
+        $playedGameId = PlayedGame::select('id')->where('game_id', $game->id)->first();
+        $question = null;
+        if (empty($playedGameId)) {
+            PlayedGame::create([
+                'user_id' => Auth::user()? Auth::user()->id : $this->getGuestUser()->id,
+                'title' => $game->title,
+                'description' => $game->description,
+                'image' => $game->image,
+                'passing_percent' => $game->passing_percent,
+                'time_in_sec' => $game->time_in_sec,
+                'game_id' => $game->id,
+                'author_user_id' => $game->user_id,
+                'guest_user_id' => "Cookie id here(TODO)"
+            ]);
+            $question = Question::where('game_id', $game->id)->first();
+        }
+        else {
+            $playedQuestionIds = PlayedQuestion::select('question_id')->where('played_game_id', $playedGameId)->get();
+            $question = Question::whereNotIn('id', $playedQuestionIds)->first();
+        }
+
+        return Inertia::render('Games/QuestionPlay', [
+            'game' => $game,
+            'question' => $question
+        ]);
+    }
+
+    public function questionPlay(Game $game)
+    {
+        // Get played game
+        $playedGameId = PlayedGame::select('id')->where('game_id', $game->id)->first();
+        if (empty($playedGameId)) {
+            return redirect()->route('public.play.game', $game);
+        }
+        $playedQuestionIds = PlayedQuestion::select('question_id')->where('played_game_id', $playedGameId)->get();
+        $question = Question::whereNotIn('id', $playedQuestionIds)->first();
+
+        return Inertia::render('Games/QuestionPlay', [
+            'game' => $game,
+            'question' => $question
         ]);
     }
 
@@ -127,5 +175,10 @@ class GameController extends Controller
         }
 
         return $questionsWithChoices;
+    }
+
+    private function getGuestUser()
+    {
+        return User::where('email', 'guest@cebushopping.com')->first();
     }
 }

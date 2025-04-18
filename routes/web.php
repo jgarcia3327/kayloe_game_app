@@ -8,8 +8,10 @@ use Inertia\Inertia;
 
 Route::get('/', [GameController::class, 'home'])->name('home');
 
-
+// Play
 Route::get('/play/game/{game}', [GameController::class, 'play'])->name('public.play.game');
+Route::get('/play/game/{game}/question', [GameController::class, 'questionPlay'])->name('public.play.game.question');
+Route::post('/play/game/{game}/question', [GameController::class, 'startPlay'])->name('public.play.game.start');
 
 
 Route::get('/dashboard', function () {
