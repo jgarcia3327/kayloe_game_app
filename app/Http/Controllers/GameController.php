@@ -77,14 +77,13 @@ class GameController extends Controller
 
     public function store(Request $request)
     {
-        if (!Auth::check())
-            return redirect(route('home'));
-
         $game = Game::create([
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $request->image
+            'image' => $request->image,
+            'passing_percent' => $request->passing_percent,
+            'time_in_sec' => $request->time_in_sec
         ]);
         
         return $this->edit($game);

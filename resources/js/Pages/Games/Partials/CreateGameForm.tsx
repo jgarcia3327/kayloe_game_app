@@ -12,7 +12,9 @@ export default function CreateGameForm({className=''}:{
     const { data, setData, post, errors, processing, recentlySuccessful } = useForm({
             title: "",
             description: "",
-            image: ""
+            image: "",
+            passing_percent: "",
+            time_in_sec: ""
         });
     
 
@@ -28,7 +30,7 @@ export default function CreateGameForm({className=''}:{
                 <h2 className="text-lg font-medium text-gray-900">Game Information</h2>
 
                 <p className="mt-1 text-sm text-gray-600">
-                    Update game.
+                    Create new game.
                 </p>
             </header>
 
@@ -63,6 +65,30 @@ export default function CreateGameForm({className=''}:{
                         className="mt-1 block w-full"
                         value={data.image}
                         onChange={(e) => setData('image', e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="passing_percent" value="Passing Percentage %" />
+
+                    <TextInput
+                        type="number"
+                        id="passing_percentage"
+                        className="mt-1 block w-full"
+                        value={data.passing_percent}
+                        onChange={(e) => setData('passing_percent', e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="time_in_sec" value="Time in seconds" />
+
+                    <TextInput
+                        type="number"
+                        id="time_in_sec"
+                        className="mt-1 block w-full"
+                        value={data.time_in_sec}
+                        onChange={(e) => setData('time_in_sec', e.target.value)}
                     />
                 </div>
 

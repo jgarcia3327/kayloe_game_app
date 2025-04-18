@@ -15,7 +15,9 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
     const { data, setData, patch, delete: destroy, errors, processing, recentlySuccessful } = useForm({
         title: game.title,
         description: game.description,
-        image: game.image
+        image: game.image,
+        passing_percent: game.passing_percent,
+        time_in_sec: game.time_in_sec
     });
 
     const submit = (e:any) => {
@@ -38,7 +40,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                 <h2 className="text-lg font-medium text-gray-900">Game Information</h2>
 
                 <p className="mt-1 text-sm text-gray-600">
-                    Update game.
+                    Update game info.
                 </p>
             </header>
 
@@ -72,7 +74,31 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                         id="image"
                         className="mt-1 block w-full"
                         value={data.image}
-                        disabled
+                        onChange={(e) => setData('image', e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="passing_percent" value="Passing Percentage %" />
+
+                    <TextInput
+                        type="number"
+                        id="passing_percentage"
+                        className="mt-1 block w-full"
+                        value={data.passing_percent}
+                        onChange={(e) => setData('passing_percent', parseInt(e.target.value))}
+                    />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="time_in_sec" value="Time in seconds" />
+
+                    <TextInput
+                        type="number"
+                        id="time_in_sec"
+                        className="mt-1 block w-full"
+                        value={data.time_in_sec}
+                        onChange={(e) => setData('time_in_sec', parseInt(e.target.value))}
                     />
                 </div>
 
