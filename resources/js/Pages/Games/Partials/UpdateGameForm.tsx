@@ -1,3 +1,4 @@
+import Checkbox from '@/Components/Checkbox';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextAreaInput from '@/Components/TextAreaInput';
@@ -17,13 +18,15 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
         description: game.description,
         image: game.image,
         passing_percent: game.passing_percent,
-        time_in_sec: game.time_in_sec
+        time_in_sec: game.time_in_sec,
+        is_active: game.is_active
     });
 
     const submit = (e:any) => {
         e.preventDefault();
-
-        patch(route('game.update', game.id));
+        patch(route('game.update', game.id), {
+            preserveScroll: true
+        });
     };
 
     const handleDelete = (e:any, game: GameProps) => {
@@ -99,6 +102,17 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                         className="mt-1 block w-full"
                         value={data.time_in_sec}
                         onChange={(e) => setData('time_in_sec', parseInt(e.target.value))}
+                    />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="is_active" value="Active" />
+
+                    <Checkbox
+                        id="is_active"
+                        className="mt-1 block w-full"
+                        {...(data.is_active && {checked:true})}
+                        onChange={(e) => {setData('is_active', e.target.checked)}}
                     />
                 </div>
 

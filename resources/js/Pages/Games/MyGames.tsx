@@ -1,9 +1,12 @@
 import GameBox from "@/Pages/Games/Partials/GameBox";
 import { Head } from "@inertiajs/react";
-import { HomeProps } from "@/types";
+import { AuthProps, GameProps } from "@/types";
 import GameLayout from "@/Layouts/GameLayout";
 
-export default function MyGames({ auth, games }:HomeProps) {
+export default function MyGames({ auth, games }:{
+    auth: AuthProps;
+    games: [GameProps];
+}) {
 
     return (
         <GameLayout

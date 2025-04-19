@@ -19,7 +19,7 @@ export default function CreateQuestionForm({game, question, choices, className='
         description: "",
         image: "",
         is_correct: false,
-        id: null
+        id: 0
     }
 
     const { data, setData, post, patch, errors, processing, recentlySuccessful } = useForm({
@@ -53,7 +53,7 @@ export default function CreateQuestionForm({game, question, choices, className='
                     description: "",
                     image: "",
                     is_correct: false,
-                    id: null
+                    id: 0
                 }
                 // Add first/prior occurence
                 if(key.toLowerCase().includes('description')) choiceObj.description = value.toString();

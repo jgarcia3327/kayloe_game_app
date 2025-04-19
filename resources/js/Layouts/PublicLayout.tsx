@@ -83,13 +83,22 @@ export default function Authenticated({
                                                 Log Out
                                             </Dropdown.Link>
                                         </>:
-                                        <Dropdown.Link
-                                            href={route('login')}
-                                            method="get"
-                                            as="button"
-                                        >
-                                            Log In
-                                        </Dropdown.Link>}
+                                        <>
+                                            <Dropdown.Link
+                                                href={route('login')}
+                                                method="get"
+                                                as="button"
+                                            >
+                                                Log In
+                                            </Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route('register')}
+                                                method="get"
+                                                as="button"
+                                            >
+                                                Register
+                                            </Dropdown.Link>
+                                    </>}
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>

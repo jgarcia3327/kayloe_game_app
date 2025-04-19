@@ -29,14 +29,11 @@ export interface Game {
     image: string;
     passing_percent: number;
     time_in_sec: number;
+    question_count: number;
+    is_active: boolean;
 }
 
 export type GameProps = Game;
-
-export type HomeProps = {
-    auth: PagePropsProps;
-    games: GameProps;
-}
 
 export interface Question {
     map(arg0: (question: QuestionProps) => JSX.Element): import("react").ReactNode;
@@ -66,7 +63,32 @@ export type QuestionsWithChoicesProps = {
 }
 
 // FIXME
+export interface PlayedQuestion {
+    map(arg0: (played_question: PlayedQuestionProps) => JSX.Element): import("react").ReactNode;
+    id: number;
+    played_game_id: number;
+    question_id: number;
+    question: string;
+    image: string;
+    correct_percent: number;
+}
+
+export type PlayedQuestionProps = PlayedQuestion;
+
+export interface PlayedChoice {
+    map(arg0: (played_choice: PlayedChoiceProps) => JSX.Element): import("react").ReactNode;
+    id: number;
+    played_question_id: number;
+    choice_id: number;
+    description: string;
+    image: string;
+    is_correct: boolean;
+    is_answer: boolean;
+}
+
+export type PlayedChoiceProps = PlayedChoice;
+
 export type PlayedQuestionsWithChoicesProps = {
-    question: QuestionProps;
-    choices: ChoiceProps;
+    question: PlayedQuestionProps;
+    choices: PlayedChoiceProps;
 }

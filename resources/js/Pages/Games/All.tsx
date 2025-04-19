@@ -1,9 +1,12 @@
-import { HomeProps } from "@/types";
+import { AuthProps, GameProps } from "@/types";
 import { Head } from "@inertiajs/react";
 import GameBox from "@/Pages/Games/Partials/GameBox";
 import GameLayout from "@/Layouts/GameLayout";
 
-export default function All({ auth, games }:HomeProps) {
+export default function All({ auth, games }:{
+    auth: AuthProps,
+    games: [GameProps]
+}) {
 
     return (
         <GameLayout

@@ -2,7 +2,7 @@ import { GameProps, AuthProps } from "@/types";
 
 export default function GameBox({ auth, games }:{
     auth: AuthProps;
-    games: GameProps;
+    games: [GameProps];
 }) {
 
     return (
@@ -22,13 +22,29 @@ export default function GameBox({ auth, games }:{
                                 {game.description}
                             </p>
                             <div className="grid grid-cols-2 w-full pt-8">
-                                {auth.user && game.user_id === auth.user.id ? 
+                                {game.is_active ? (
+                                    game.question_count > 0 ? (
+                                    <a 
+                                        className="mr-3 col-span-full text-center bg-red-400 rounded-md" 
+                                        href={route("public.play.game", game.id).toString()}
+                                    >
+                                        Play
+                                    </a>
+                                    ):(
+                                        <>
+                                            <span>No question(s) set.</span>
+                                        </>
+                                    )
+                                ):(
                                 <>
-                                    <a className="mr-3 col-span-1 text-center bg-red-400 rounded-md" href={route("public.play.game", game.id)}>Play</a>
-                                    <a className="ml-3 cols-span-1 text-center bg-green-300 rounded-md" href={route('game.edit', game.id)}>Edit</a>
+                                    <span>Not Active</span>
                                 </>
-                                :
-                                <a className="mr-3 col-span-full text-center bg-red-400 rounded-md" href={route("public.play.game", game.id).toString()}>Play</a>
+                                )
+                                }
+                                {(auth.user && game.user_id === auth.user.id) && 
+                                <>
+                                    <a className="ml-3 cols-span-full text-center bg-green-300 rounded-md" href={route('game.edit', game.id)}>Edit</a>
+                                </>
                                 }
                             </div>
                         </div>
