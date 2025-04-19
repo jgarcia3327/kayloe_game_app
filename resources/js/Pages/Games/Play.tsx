@@ -19,7 +19,7 @@ export default function Play({game, questionLength, status}: {
     };
 
     const continuePlayHandler = (e:any) => {
-        // TODO
+        post(route('public.play.game.start', game.id));
     }
 
     const scorePlayHandler = (e:any) => {

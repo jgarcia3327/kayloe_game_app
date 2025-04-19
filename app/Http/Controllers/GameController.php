@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Choice;
 use App\Models\Game;
+use App\Models\PlayedChoices;
 use App\Models\PlayedGame;
 use App\Models\PlayedQuestion;
 use App\Models\Question;
@@ -133,7 +134,8 @@ class GameController extends Controller
     {
         // Get played game
         $playedGameId = PlayedGame::select('id')->where('game_id', $game->id)->first();
-        $question = null;
+        $questionsWithChoices = $this->getQuestionsWithChoices($game);
+        $playedQuestionsWithChoices = null;
         if (empty($playedGameId)) {
             PlayedGame::create([
                 'user_id' => Auth::user()? Auth::user()->id : $this->getGuestUser()->id,
@@ -146,16 +148,15 @@ class GameController extends Controller
                 'author_user_id' => $game->user_id,
                 'guest_user_id' => "Cookie id here(TODO)"
             ]);
-            $question = Question::where('game_id', $game->id)->first();
         }
         else {
-            $playedQuestionIds = PlayedQuestion::select('question_id')->where('played_game_id', $playedGameId)->get();
-            $question = Question::whereNotIn('id', $playedQuestionIds)->first();
+            $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGameId);
         }
 
         return Inertia::render('Games/QuestionPlay', [
             'game' => $game,
-            'question' => $question
+            'questionWithChoices' => $questionsWithChoices,
+            'playedQuestionWithChoices' => $playedQuestionsWithChoices
         ]);
     }
 
@@ -173,6 +174,20 @@ class GameController extends Controller
             'game' => $game,
             'question' => $question
         ]);
+    }
+
+    private function getPlayedQuestionsWithChoices($playedGameId) {
+        $playedQuestions = PlayedQuestion::where('played_game_id', $playedGameId)->first();
+        $playedQuestionsWithChoices = [];
+        if (!empty($playedQuestions)) {
+            foreach ($playedQuestions AS $q) {
+                array_push($questionsWithChoices, (object)array(
+                    'playedQuestion' => $q,
+                    'playedChoices' => PlayedChoices::where('played_question_id', $q->id)->get()
+                ));
+            }
+        }
+        return $playedQuestionsWithChoices;
     }
 
     private function getQuestionsWithChoices(Game $game) {

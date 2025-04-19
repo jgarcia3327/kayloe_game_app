@@ -64,3 +64,9 @@ export type QuestionsWithChoicesProps = {
     question: QuestionProps;
     choices: ChoiceProps;
 }
+
+// FIXME
+export type PlayedQuestionsWithChoicesProps = {
+    question: QuestionProps;
+    choices: ChoiceProps;
+}
