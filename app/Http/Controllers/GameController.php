@@ -8,6 +8,7 @@ use App\Models\Game;
 use App\Models\PlayedGame;
 use App\Models\PlayedQuestion;
 use App\Models\Question;
+use App\Models\Score;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -112,9 +113,19 @@ class GameController extends Controller
 
     public function play(Game $game): Response
     { 
+
+        $status = 0; // 0 = play, 1 = continue, 2 = get score(done)
+        $playedGameId = PlayedGame::select('id')->where('game_id', $game->id)->first();
+        if (!empty($playedGameId)) {
+            $status = 1;
+            if (Score::where('played_game_id', $playedGameId->id)->count() > 0) {
+                $status = 2;
+            }
+        }
         return Inertia::render('Games/Play', [
             'game' => $game,
-            'questionLength' => Question::where('game_id', $game->id)->count()
+            'questionLength' => Question::where('game_id', $game->id)->count(),
+            'status' => $status
         ]);
     }
 

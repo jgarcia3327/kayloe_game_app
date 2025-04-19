@@ -4,9 +4,10 @@ import { AuthProps, GameProps, QuestionsWithChoicesProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
 
-export default function Play({game, questionLength}: {
+export default function Play({game, questionLength, status}: {
     game: GameProps;
     questionLength: number;
+    status: number;
 }) {
     
     const { post, processing, recentlySuccessful } = useForm({
@@ -16,6 +17,14 @@ export default function Play({game, questionLength}: {
     const startPlayHandler = (e:any) => {
         post(route('public.play.game.start', game.id));
     };
+
+    const continuePlayHandler = (e:any) => {
+        // TODO
+    }
+
+    const scorePlayHandler = (e:any) => {
+        // TODO
+    }
 
     return (
         <GameLayout
@@ -34,13 +43,33 @@ export default function Play({game, questionLength}: {
                         <p>Game time: {game.time_in_sec}</p>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
-                        <PrimaryButton 
-                            className="col-span-1 col-start-2 text-center inline-grid bg-green-900" 
-                            disabled={processing}
-                            onClick={startPlayHandler}
-                        >
-                            Start
-                        </PrimaryButton> 
+                        {status === 0 && 
+                            <PrimaryButton 
+                                className="col-span-1 col-start-2 text-center inline-grid bg-green-900" 
+                                disabled={processing}
+                                onClick={startPlayHandler}
+                            >
+                                Start
+                            </PrimaryButton> 
+                        }
+                        {status === 1 && 
+                            <PrimaryButton 
+                                className="col-span-1 col-start-2 text-center inline-grid bg-orange-800" 
+                                disabled={processing}
+                                onClick={continuePlayHandler}
+                            >
+                                Continue
+                            </PrimaryButton> 
+                        }
+                        {status === 2 && 
+                            <PrimaryButton 
+                                className="col-span-1 col-start-2 text-center inline-grid bg-gray-600" 
+                                disabled={processing}
+                                onClick={scorePlayHandler}
+                            >
+                                See score
+                            </PrimaryButton>
+                        }
                         <Transition
                             show={recentlySuccessful}
                             enter="transition ease-in-out"
