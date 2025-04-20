@@ -4,13 +4,12 @@ import { AuthProps, GameProps, QuestionsWithChoicesProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
 
-export default function Play({game, questionLength, status}: {
+export default function Play({game, status}: {
     game: GameProps;
-    questionLength: number;
     status: number;
 }) {
     
-    const { post, processing, recentlySuccessful } = useForm({
+    const { post, get, processing, recentlySuccessful } = useForm({
         // 
     });
 
@@ -19,7 +18,7 @@ export default function Play({game, questionLength, status}: {
     };
 
     const continuePlayHandler = (e:any) => {
-        post(route('public.play.game.start', game.id));
+        get(route('public.play.game.question', game.id));
     }
 
     const scorePlayHandler = (e:any) => {
@@ -39,7 +38,7 @@ export default function Play({game, questionLength, status}: {
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <p className="text-xl">{game.description}</p>
                         <p className="mt-4">Passing percentage: {game.passing_percent}</p>
-                        <p className="mt-4">Number of questions: {questionLength}</p>
+                        <p className="mt-4">Number of questions: {game.question_count}</p>
                         <p>Game time: {game.time_in_sec}</p>
                     </div>
                     <div className="grid grid-cols-3 gap-4">

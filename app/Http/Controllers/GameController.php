@@ -22,7 +22,7 @@ class GameController extends Controller
     public function home(): Response
     {
         $games = Game::orderBy('created_at', 'DESC')->get();
-        // dd($games);
+
         return Inertia::render('Home', [
             'games' => $games,
             'isLoggedIn' => Auth::check()
@@ -130,7 +130,6 @@ class GameController extends Controller
         }
         return Inertia::render('Games/Play', [
             'game' => $game,
-            'questionLength' => Question::where('game_id', $game->id)->count(),
             'status' => $status
         ]);
     }
@@ -160,8 +159,8 @@ class GameController extends Controller
 
         return Inertia::render('Games/QuestionPlay', [
             'game' => $game,
-            'questionWithChoices' => $questionsWithChoices,
-            'playedQuestionWithChoices' => $playedQuestionsWithChoices
+            'questionsWithChoices' => $questionsWithChoices,
+            'playedQuestionsWithChoices' => $playedQuestionsWithChoices
         ]);
     }
 
@@ -170,7 +169,6 @@ class GameController extends Controller
         // Get played game and redirect to game start if haven't played yet
         $playedGameId = PlayedGame::select('id')->where('game_id', $game->id)->first();
         $questionsWithChoices = $this->getQuestionsWithChoices($game);
-        dd($questionsWithChoices);
         $playedQuestionsWithChoices = null;
         if (empty($playedGameId)) {
             redirect(route('public.play.game'));
@@ -179,10 +177,12 @@ class GameController extends Controller
             $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGameId);
         }
 
+        // dd($questionsWithChoices);
+
         return Inertia::render('Games/QuestionPlay', [
             'game' => $game,
-            'questionWithChoices' => $questionsWithChoices,
-            'playedQuestionWithChoices' => $playedQuestionsWithChoices
+            'questionsWithChoices' => $questionsWithChoices,
+            'playedQuestionsWithChoices' => $playedQuestionsWithChoices
         ]);
     }
 

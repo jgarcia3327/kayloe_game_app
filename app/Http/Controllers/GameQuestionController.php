@@ -48,6 +48,9 @@ class GameQuestionController extends Controller
         if (Auth::check() && $game->user_id === Auth::user()->id) {
             $question->delete();
         }
+
+        $this->updateGameQuestionCount($question->game_id);
+        
     }
 
     public function update(Question $question, Request $request)
@@ -87,6 +90,8 @@ class GameQuestionController extends Controller
             }
         }
 
+        $this->updateGameQuestionCount($question->game_id);
+
         return redirect()->route('game.edit', [$request->gameId]);
         
     }
@@ -114,7 +119,21 @@ class GameQuestionController extends Controller
             ]);
         }
 
+        $this->updateGameQuestionCount($question->game_id);
+
         return redirect()->route('game.edit', [$request->gameId]);
         
+    }
+
+    private function updateGameQuestionCount($game_id)
+    {
+        $game = Game::find($game_id);
+        if (!empty($game)) {
+            $game->update([
+                'question_count' => Question::where('game_id', $game->id)->count()
+            ]);
+            return true;
+        }
+        return false;
     }
 }
