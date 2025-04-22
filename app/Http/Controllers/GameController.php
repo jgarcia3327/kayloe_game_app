@@ -98,6 +98,12 @@ class GameController extends Controller
         return $this->edit($game);
     }
 
+    public function storeQuestionAnswer(Game $game, Request $request) 
+    {
+        // TODO
+        dd($request->answer);
+    }
+
     public function user(User $user): Response
     {
         $games = Game::where('user_id', $user->id)->get();

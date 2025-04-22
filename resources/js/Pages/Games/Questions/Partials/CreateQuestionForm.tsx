@@ -30,7 +30,7 @@ export default function CreateQuestionForm({game, question, choices, className='
             choices: [choiceObj]
         });
 
-    const submit = (e:any) => {
+    const submit = (e: React.BaseSyntheticEvent) => {
         e.preventDefault();
 
         // Parse choices using useFieldArray from CreateChoiceForm
