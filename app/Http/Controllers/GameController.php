@@ -233,6 +233,14 @@ class GameController extends Controller
         ]);
     }
 
+    public function gameScore(Game $game) : Response
+    {
+        return Inertia::render('Games/Score', [
+            'score' => Score::where('game_id', $game->id)->where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->first(),
+            'game' => $game
+        ]);
+    }
+
     private function getPlayedQuestionsWithChoices($playedGameId) {
         $playedQuestions = PlayedQuestion::where('played_game_id', $playedGameId)->first();
         $playedQuestionsWithChoices = [];

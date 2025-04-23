@@ -33,7 +33,7 @@ export default function GameBox({ auth, games, scores }:{
                                             <>
                                             <a 
                                                 className="col-span-1 text-center bg-gray-600 rounded-md" 
-                                                href="#"
+                                                href={route("public.game.score", game.id).toString()}
                                             >
                                                 Score
                                             </a>
