@@ -1,12 +1,17 @@
-import { AuthProps, GameProps } from "@/types";
+import { AuthProps, GameProps, ScoreProps } from "@/types";
 import { Head } from "@inertiajs/react";
 import GameBox from "@/Pages/Games/Partials/GameBox";
 import GameLayout from "@/Layouts/GameLayout";
 
-export default function All({ auth, games }:{
+export default function All({ auth, games, scores }:{
     auth: AuthProps,
-    games: [GameProps]
+    games: [GameProps],
+    scores: [ScoreProps]
 }) {
+
+    const scoreGames = scores? scores.map((s) => s.game_id) : [];
+    console.log(scores);
+    console.log(scoreGames);
 
     return (
         <GameLayout
@@ -22,7 +27,7 @@ export default function All({ auth, games }:{
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <GameBox games={games} auth={auth}></GameBox>
+                        <GameBox games={games} auth={auth} scores={scores}></GameBox>
                     </div>
                 </div>
             </div>

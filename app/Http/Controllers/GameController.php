@@ -13,7 +13,6 @@ use App\Models\Score;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -25,7 +24,7 @@ class GameController extends Controller
 
         return Inertia::render('Home', [
             'games' => $games,
-            'isLoggedIn' => Auth::check()
+            'scores' => $this->getScores($games)
         ]);
     }
 
@@ -34,7 +33,8 @@ class GameController extends Controller
         $games = Game::orderBy('created_at', 'DESC')->get();
 
         return Inertia::render('Games/All', [
-            'games' => $games
+            'games' => $games,
+            'scores' => $this->getScores($games)
         ]);
     }
 
@@ -100,8 +100,6 @@ class GameController extends Controller
 
     public function storeQuestionAnswer(PlayedGame $playedGame, Request $request) 
     {
-        // dd($playedGame);
-        // dd($request->answer);
         $score = 0;
         foreach($request->answer AS $q => $a) {
             $question = Question::find($q);
@@ -118,15 +116,15 @@ class GameController extends Controller
                 if (!empty($choices)) {
                     foreach($choices AS $c) {
                         // Save to played_choices
-                        $playedChoice = PlayedChoice::create([
+                        PlayedChoice::create([
                             'played_question_id' => $playedQuestion->id,
                             'description' => $c->description,
                             'image' => $c->image, 
                             'is_correct' => $c->is_correct,
                             'choice_id' => $c->id,
-                            'is_answer' => $a === $c->id? true : false
+                            'is_answer' => (intval($a) === $c->id)? true : false
                         ]);
-                        if($c->correct && $a === $c->id) $score++;
+                        if($c->is_correct && intval($a) === $c->id) $score++;
                     }
                 }
             }
@@ -138,6 +136,7 @@ class GameController extends Controller
         // Save score
         Score::create([
             'played_game_id' => $playedGame->id,
+            'game_id' => $playedGame->game_id,
             'score' => $score,
             'question_count' => $questionCount,
             'is_passed' => $isPassed
@@ -264,5 +263,14 @@ class GameController extends Controller
     private function getGuestUser()
     {
         return User::where('email', 'guest@cebushopping.com')->first();
+    }
+
+    private function getScores($games)
+    {
+        // Get scores if logged in
+        if (Auth::check()) {
+            return Score::where('user_id', Auth::user()->id)->whereIn('game_id', $games->pluck('id'))->get();
+        }
+        return null;
     }
 }

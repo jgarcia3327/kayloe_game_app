@@ -97,3 +97,16 @@ export type PlayedQuestionsWithChoicesProps = {
     question: PlayedQuestionProps;
     choices: PlayedChoiceProps;
 }
+
+export interface Score {
+    map(arg0: (score: ScoreProps) => JSX.Element): import("react").ReactNode;
+    id: number;
+    played_game_id: number;
+    game_id: number;
+    user_id: number;
+    score: number;
+    question_count: number;
+    is_passed: boolean;
+}
+
+export type ScoreProps = Score;

@@ -1,12 +1,13 @@
 import GameBox from '@/Pages/Games/Partials/GameBox';
-import { HomeProps } from '@/types';
+import { AuthProps, GameProps, ScoreProps } from '@/types';
 import GameLayout from '@/Layouts/GameLayout';
 
 
-export default function Home({
-    auth,
-    games
-}: HomeProps) {
+export default function Home({ auth, games, scores}: {
+    auth: AuthProps;
+    games: [GameProps];
+    scores?: [ScoreProps];
+}) {
 
     return (
         <GameLayout 
@@ -27,7 +28,7 @@ export default function Home({
                         </header>
 
                         <main className="mt-6">
-                            <GameBox games={games} auth={auth}></GameBox>
+                            <GameBox games={games} auth={auth} scores={scores}></GameBox>
                         </main>
 
                         <footer className="py-16 text-center text-sm text-black dark:text-white/70">
