@@ -34,6 +34,11 @@ export interface Game {
 }
 
 export type GameProps = Game;
+export type PlayedGameProps = Game & {
+    game_id: number;
+    author_user_id: number;
+    guest_user_id: number;
+};
 
 export interface Question {
     map(arg0: (question: QuestionProps) => JSX.Element): import("react").ReactNode;

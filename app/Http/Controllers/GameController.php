@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Choice;
 use App\Models\Game;
-use App\Models\PlayedChoices;
+use App\Models\PlayedChoice;
 use App\Models\PlayedGame;
 use App\Models\PlayedQuestion;
 use App\Models\Question;
@@ -98,10 +98,54 @@ class GameController extends Controller
         return $this->edit($game);
     }
 
-    public function storeQuestionAnswer(Game $game, Request $request) 
+    public function storeQuestionAnswer(PlayedGame $playedGame, Request $request) 
     {
-        // TODO
-        dd($request->answer);
+        // dd($playedGame);
+        // dd($request->answer);
+        $score = 0;
+        foreach($request->answer AS $q => $a) {
+            $question = Question::find($q);
+            if (!empty($question)) {
+                // Save to played_questions
+                $playedQuestion = PlayedQuestion::create([
+                    'played_game_id' => $playedGame->id,
+                    'question' => $question->question,
+                    'image' => $question->image,
+                    'correct_percent' => $question->correct_percent,
+                    'question_id' => $question->id
+                ]);
+                $choices = Choice::where('question_id', $question->id)->get();
+                if (!empty($choices)) {
+                    foreach($choices AS $c) {
+                        // Save to played_choices
+                        $playedChoice = PlayedChoice::create([
+                            'played_question_id' => $playedQuestion->id,
+                            'description' => $c->description,
+                            'image' => $c->image, 
+                            'is_correct' => $c->is_correct,
+                            'choice_id' => $c->id,
+                            'is_answer' => $a === $c->id? true : false
+                        ]);
+                        if($c->correct && $a === $c->id) $score++;
+                    }
+                }
+            }
+        }
+
+        $questionCount = count($request->answer);
+        $isPassed = (($score / $questionCount) * 100) >= $playedGame->passing_percent;
+
+        // Save score
+        Score::create([
+            'played_game_id' => $playedGame->id,
+            'score' => $score,
+            'question_count' => $questionCount,
+            'is_passed' => $isPassed
+        ]);
+
+        // Redirect here
+        // FIXME redirect to score view
+        return redirect()->route('home');
     }
 
     public function user(User $user): Response
@@ -143,11 +187,11 @@ class GameController extends Controller
     public function startPlay(Game $game): Response
     {
         // Get played game
-        $playedGameId = PlayedGame::select('id')->where('game_id', $game->id)->first();
+        $playedGame = PlayedGame::where('game_id', $game->id)->first();
         $questionsWithChoices = $this->getQuestionsWithChoices($game);
         $playedQuestionsWithChoices = null;
-        if (empty($playedGameId)) {
-            PlayedGame::create([
+        if (empty($playedGame)) {
+            $playedGame = PlayedGame::create([
                 'user_id' => Auth::user()? Auth::user()->id : $this->getGuestUser()->id,
                 'title' => $game->title,
                 'description' => $game->description,
@@ -160,33 +204,31 @@ class GameController extends Controller
             ]);
         }
         else {
-            $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGameId);
+            $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGame->id);
         }
 
         return Inertia::render('Games/QuestionPlay', [
-            'game' => $game,
+            'playedGame' => $playedGame,
             'questionsWithChoices' => $questionsWithChoices,
-            'playedQuestionsWithChoices' => $playedQuestionsWithChoices
+            'playedQuestionsWithChoices' => $playedQuestionsWithChoices // Next feature
         ]);
     }
 
     public function questionPlay(Game $game)
     {
         // Get played game and redirect to game start if haven't played yet
-        $playedGameId = PlayedGame::select('id')->where('game_id', $game->id)->first();
+        $playedGame = PlayedGame::where('game_id', $game->id)->first();
         $questionsWithChoices = $this->getQuestionsWithChoices($game);
         $playedQuestionsWithChoices = null;
-        if (empty($playedGameId)) {
+        if (empty($playedGame)) {
             redirect(route('public.play.game'));
         }
         else {
-            $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGameId);
+            $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGame->id);
         }
 
-        // dd($questionsWithChoices);
-
         return Inertia::render('Games/QuestionPlay', [
-            'game' => $game,
+            'playedGame' => $playedGame,
             'questionsWithChoices' => $questionsWithChoices,
             'playedQuestionsWithChoices' => $playedQuestionsWithChoices
         ]);
@@ -199,7 +241,7 @@ class GameController extends Controller
             foreach ($playedQuestions AS $q) {
                 array_push($questionsWithChoices, (object)array(
                     'playedQuestion' => $q,
-                    'playedChoices' => PlayedChoices::where('played_question_id', $q->id)->get()
+                    'playedChoices' => PlayedChoice::where('played_question_id', $q->id)->get()
                 ));
             }
         }

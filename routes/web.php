@@ -12,7 +12,7 @@ Route::get('/', [GameController::class, 'home'])->name('home');
 Route::get('/play/game/{game}', [GameController::class, 'play'])->name('public.play.game');
 Route::get('/play/game/{game}/question', [GameController::class, 'questionPlay'])->name('public.play.game.question');
 Route::post('/play/game/{game}/question', [GameController::class, 'startPlay'])->name('public.play.game.start');
-Route::post('/play/game/{game}/question/answer', [GameController::class, 'storeQuestionAnswer'])->name('public.play.question.answer.store');
+Route::post('/play/game/{playedGame}/question/answer', [GameController::class, 'storeQuestionAnswer'])->name('public.play.question.answer.store');
 
 
 Route::get('/dashboard', function () {

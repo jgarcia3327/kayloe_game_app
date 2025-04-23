@@ -106,11 +106,10 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="is_active" value="Active" />
+                    <InputLabel htmlFor="is_active" value="Active" className="inline pr-2"/>
 
                     <Checkbox
                         id="is_active"
-                        className="mt-1 block w-full"
                         {...(data.is_active && {checked:true})}
                         onChange={(e) => {setData('is_active', e.target.checked)}}
                     />
