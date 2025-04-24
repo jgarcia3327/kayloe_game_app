@@ -38,6 +38,16 @@ class GameController extends Controller
         ]);
     }
 
+    public function my_games(): Response
+    {
+        $games = Game::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+
+        return Inertia::render('Games/MyGames', [
+            'games' => $games,
+            'scores' => $this->getScores($games)
+        ]);
+    }
+
     public function create()
     {
         if (!Auth::check())
@@ -154,15 +164,6 @@ class GameController extends Controller
         return Inertia::render('Games/User', [
             'games' => $games,
             'user' => $user
-        ]);
-    }
-
-    public function my_games(): Response
-    {
-        $games = Game::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
-
-        return Inertia::render('Games/MyGames', [
-            'games' => $games
         ]);
     }
 

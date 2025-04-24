@@ -22,7 +22,7 @@ export default function Play({game, status}: {
     }
 
     const scorePlayHandler = (e:any) => {
-        // TODO
+        get(route("public.game.score", game.id));
     }
 
     return (

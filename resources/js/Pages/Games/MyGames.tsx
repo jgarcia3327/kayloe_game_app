@@ -1,11 +1,12 @@
 import GameBox from "@/Pages/Games/Partials/GameBox";
 import { Head } from "@inertiajs/react";
-import { AuthProps, GameProps } from "@/types";
+import { AuthProps, GameProps, ScoreProps } from "@/types";
 import GameLayout from "@/Layouts/GameLayout";
 
-export default function MyGames({ auth, games }:{
-    auth: AuthProps;
-    games: [GameProps];
+export default function MyGames({ auth, games, scores }:{
+    auth: AuthProps,
+    games: [GameProps],
+    scores: [ScoreProps]
 }) {
 
     return (
@@ -22,7 +23,7 @@ export default function MyGames({ auth, games }:{
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <GameBox games={games} auth={auth}></GameBox>
+                        <GameBox games={games} auth={auth} scores={scores}></GameBox>
                     </div>
                 </div>
             </div>

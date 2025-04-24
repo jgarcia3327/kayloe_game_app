@@ -7,8 +7,6 @@ export default function GameBox({ auth, games, scores }:{
 }) {
 
     const scoredGames = scores? scores.map((s) => s.game_id) : [];
-    console.log(scores);
-    console.log(scoredGames);
 
     return (
         <div className="columns-1 md:columns-2 lg:columns-2 gap-68">

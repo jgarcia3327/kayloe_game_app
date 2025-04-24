@@ -9,10 +9,6 @@ export default function All({ auth, games, scores }:{
     scores: [ScoreProps]
 }) {
 
-    const scoreGames = scores? scores.map((s) => s.game_id) : [];
-    console.log(scores);
-    console.log(scoreGames);
-
     return (
         <GameLayout
             header={
