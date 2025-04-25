@@ -9,7 +9,7 @@ export default function GameImageUpload({game, className=''}:{
     className?: string
 }){
 
-    const { data, setData, post, processing, recentlySuccessful } = useForm<any>({
+    const { data, setData, post, processing, recentlySuccessful } = useForm({
         image : null
     }); 
 
@@ -27,6 +27,7 @@ export default function GameImageUpload({game, className=''}:{
                     type="file"
                     id="image"
                     className="mt-1 block w-full mb-2"
+                    accept="image/png, image/gif, image/jpeg"
                     onChange={(e) => {
                         if (e.target.files && e.target.files[0])
                             setData('image', e.target.files[0]);

@@ -110,9 +110,11 @@ class GameController extends Controller
 
     public function storeImage(Request $request, Game $game)
     {
-        // dd($request);
-        dd($request->files);
-        dd($game);
+        $file = $request->file('image');
+        $filename = $file->storeAs($game->id.'.' . $file->getClientOriginalExtension(), ['disk' => 'public_game_image']);
+        // Store $filename to DB TODO
+        dd($filename);
+        // Redirect here TODO
     }
 
     public function storeQuestionAnswer(PlayedGame $playedGame, Request $request) 
