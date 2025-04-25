@@ -13,7 +13,7 @@ export default function CreateGameForm({className=''}:{
             title: "",
             description: "",
             image: "",
-            passing_percent: "",
+            passing_percent: 100,
             time_in_sec: ""
         });
     
@@ -60,11 +60,19 @@ export default function CreateGameForm({className=''}:{
                 <div>
                     <InputLabel htmlFor="image" value="Image" />
 
-                    <TextInput
+                    <input
+                        type="file"
                         id="image"
                         className="mt-1 block w-full"
                         value={data.image}
-                        onChange={(e) => setData('image', e.target.value)}
+                        onChange={(e) => {
+                            // TODO
+                            // const file = e.target.files[0];
+                            // let formData = new FormData();
+                            // formData.append('file', file);
+                            // console.log(formData);
+                            setData('image', e.target.value);
+                        }}
                     />
                 </div>
 
@@ -76,11 +84,12 @@ export default function CreateGameForm({className=''}:{
                         id="passing_percentage"
                         className="mt-1 block w-full"
                         value={data.passing_percent}
-                        onChange={(e) => setData('passing_percent', e.target.value)}
+                        onChange={(e) => setData('passing_percent', parseInt(e.target.value))}
                     />
                 </div>
 
-                <div>
+                {/* Timed game feature */}
+                {/* <div> 
                     <InputLabel htmlFor="time_in_sec" value="Time in seconds" />
 
                     <TextInput
@@ -90,7 +99,7 @@ export default function CreateGameForm({className=''}:{
                         value={data.time_in_sec}
                         onChange={(e) => setData('time_in_sec', e.target.value)}
                     />
-                </div>
+                </div> */}
 
                 <div className="flex items-center gap-4">
                     <PrimaryButton disabled={processing}>Create</PrimaryButton> 

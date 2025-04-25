@@ -51,14 +51,10 @@ export default function GameBox({ auth, games, scores }:{
                                             </a>
                                         )
                                     ):(
-                                        <>
-                                            <span>No question(s) set.</span>
-                                        </>
+                                        <span className="col-span-2 text-center rounded-md" >No question(s) set.</span>
                                     )
                                 ):(
-                                <>
-                                    <span>Not Active</span>
-                                </>
+                                    <span className="col-span-2 text-center rounded-md" >Not Active</span>
                                 )
                                 }
                                 {(auth.user && game.user_id === auth.user.id) && 

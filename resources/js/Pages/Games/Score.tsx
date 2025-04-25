@@ -14,19 +14,21 @@ export default function MyGames({ auth, playedGame, playedQuestionsWithChoices, 
         <GameLayout
             header={
                 <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    My Games
+                    Game score
                 </h2>
             }
             auth={auth}
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
+            <div className="pt-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <h2>{playedGame.title}</h2>
-                        <p>{playedGame.description}</p>
-                        <br/>
+                    <div className="p-4 overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                        <div className="mb-2">
+                            <h2 className="text-lg font-extrabold">{playedGame.title}</h2>
+                            <p>{playedGame.description}</p>
+                        </div>
+                        <p>Passing percentage: {playedGame.passing_percent}%</p>
                         <p>Score: {score.score} / {score.question_count}</p>
                         {score.is_passed? (
                             <p>Congratulations! You passed.</p>

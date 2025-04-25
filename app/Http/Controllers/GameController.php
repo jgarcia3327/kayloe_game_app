@@ -95,6 +95,8 @@ class GameController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->image->extension());
+        dd($request);
         $game = Game::create([
             'user_id' => Auth::user()->id,
             'title' => $request->title,
@@ -104,6 +106,8 @@ class GameController extends Controller
             'time_in_sec' => $request->time_in_sec,
             'is_active' => $request->is_active
         ]);
+
+        $fileName = $game->id.$request->image->extension();
         
         return $this->edit($game);
     }
