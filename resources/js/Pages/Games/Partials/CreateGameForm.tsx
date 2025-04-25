@@ -6,10 +6,10 @@ import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 
 export default function CreateGameForm({className=''}:{
-    className: string;
+    className?: string;
 }) {
 
-    const { data, setData, post, errors, processing, recentlySuccessful } = useForm({
+    const { data, setData, post, processing, recentlySuccessful } = useForm({
             title: "",
             description: "",
             image: "",
@@ -20,7 +20,6 @@ export default function CreateGameForm({className=''}:{
 
     const submit = (e:any) => {
         e.preventDefault();
-
         post(route('game.store'));
     };
 
@@ -57,7 +56,7 @@ export default function CreateGameForm({className=''}:{
                     />
                 </div>
 
-                <div>
+                {/* <div>
                     <InputLabel htmlFor="image" value="Image" />
 
                     <input
@@ -66,15 +65,10 @@ export default function CreateGameForm({className=''}:{
                         className="mt-1 block w-full"
                         value={data.image}
                         onChange={(e) => {
-                            // TODO
-                            // const file = e.target.files[0];
-                            // let formData = new FormData();
-                            // formData.append('file', file);
-                            // console.log(formData);
                             setData('image', e.target.value);
                         }}
                     />
-                </div>
+                </div> */}
 
                 <div>
                     <InputLabel htmlFor="passing_percent" value="Passing Percentage %" />

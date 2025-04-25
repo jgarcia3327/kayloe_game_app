@@ -23,6 +23,7 @@ export default function Edit({ auth, game, questionsWithChoices }:{
                         <UpdateGameForm
                             auth={auth}
                             game={game}
+                            questionCount={questionsWithChoices.length}
                         />
                     </div>
                     <h3 className="text-lg font-bold">Questions:</h3>

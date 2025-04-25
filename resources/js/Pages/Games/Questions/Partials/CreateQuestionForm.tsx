@@ -22,7 +22,7 @@ export default function CreateQuestionForm({game, question, choices, className='
         id: 0
     }
 
-    const { data, setData, post, patch, errors, processing, recentlySuccessful } = useForm({
+    const { data, setData, post, patch, processing, recentlySuccessful } = useForm({
             gameId: game.id,
             question: question? question.question : "",
             image: question? question.image : "",

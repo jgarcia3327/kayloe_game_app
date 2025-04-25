@@ -95,21 +95,24 @@ class GameController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->image->extension());
-        dd($request);
         $game = Game::create([
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $request->image,
+            // 'image' => $request->image,
             'passing_percent' => $request->passing_percent,
-            'time_in_sec' => $request->time_in_sec,
+            // 'time_in_sec' => $request->time_in_sec,
             'is_active' => $request->is_active
         ]);
-
-        $fileName = $game->id.$request->image->extension();
         
         return $this->edit($game);
+    }
+
+    public function storeImage(Request $request, Game $game)
+    {
+        // dd($request);
+        dd($request->files);
+        dd($game);
     }
 
     public function storeQuestionAnswer(PlayedGame $playedGame, Request $request) 

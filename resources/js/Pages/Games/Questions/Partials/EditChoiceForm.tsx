@@ -12,7 +12,7 @@ export default function EditChoiceForm({choices, className=''}:{
         choice: ChoiceProps[];
     }
 
-    const { register, setValue, formState: { errors }, handleSubmit, watch, control} = useForm<FormValues>({
+    const { register, setValue, formState: { errors }, handleSubmit, watch, control} = useForm<any>({
         defaultValues: {
             choice: choices
         }
@@ -58,7 +58,7 @@ export default function EditChoiceForm({choices, className=''}:{
 
                 <div className="mt-3 flex items-center gap-4">
                     <PrimaryButton 
-                    onClick={(e) => { e.preventDefault(); append()}}
+                    onClick={(e) => { e.preventDefault(); append(null);}}
                     >
                         Add choices
                     </PrimaryButton> 

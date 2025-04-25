@@ -6,14 +6,16 @@ import TextInput from '@/Components/TextInput';
 import { AuthProps, GameProps } from '@/types';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
+import GameImageUpload from './GameImageUpload';
 
-export default function UpdateGameForm({ auth, game, className = '' }:{
-    auth: AuthProps;
-    game: GameProps;
-    className?: string;
+export default function UpdateGameForm({ auth, game, questionCount = 0, className = '' }:{
+    auth: AuthProps,
+    game: GameProps,
+    questionCount?: number,
+    className?: string,
 }) {
 
-    const { data, setData, patch, delete: destroy, errors, processing, recentlySuccessful } = useForm({
+    const { data, setData, patch, delete: destroy, processing, recentlySuccessful } = useForm({
         title: game.title,
         description: game.description,
         image: game.image,
@@ -70,7 +72,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                     />
                 </div>
 
-                <div>
+                {/* <div>
                     <InputLabel htmlFor="image" value="Image" />
 
                     <TextInput
@@ -79,7 +81,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                         value={data.image}
                         onChange={(e) => setData('image', e.target.value)}
                     />
-                </div>
+                </div> */}
 
                 <div>
                     <InputLabel htmlFor="passing_percent" value="Passing Percentage %" />
@@ -93,7 +95,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                     />
                 </div>
 
-                <div>
+                {/* <div>
                     <InputLabel htmlFor="time_in_sec" value="Time in seconds" />
 
                     <TextInput
@@ -103,7 +105,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                         value={data.time_in_sec}
                         onChange={(e) => setData('time_in_sec', parseInt(e.target.value))}
                     />
-                </div>
+                </div> */}
 
                 <div>
                     <InputLabel htmlFor="is_active" value="Active" className="inline pr-2"/>
@@ -112,6 +114,7 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                         id="is_active"
                         {...(data.is_active && {checked:true})}
                         onChange={(e) => {setData('is_active', e.target.checked)}}
+                        // {...(questionCount === 0 && {disabled:true})}
                     />
                 </div>
 
@@ -145,6 +148,10 @@ export default function UpdateGameForm({ auth, game, className = '' }:{
                     }
                 </div>
             </form>
+            <hr/>
+            <GameImageUpload
+                game={game}
+            />
         </section>
     );
 }
