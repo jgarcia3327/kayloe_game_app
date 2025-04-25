@@ -1,11 +1,13 @@
 import GameLayout from "@/Layouts/GameLayout";
-import { AuthProps, GameProps, ScoreProps } from "@/types";
+import { AuthProps, GameProps, PlayedGameProps, PlayedQuestionsWithChoicesProps, ScoreProps } from "@/types";
 import { Head } from "@inertiajs/react";
+import QuestionPlayedPreview from "./QuestionPlayedPreview";
 
-export default function MyGames({ auth, game, score }:{
-    auth: AuthProps;
-    game: GameProps;
-    score: ScoreProps;
+export default function MyGames({ auth, playedGame, playedQuestionsWithChoices, score }:{
+    auth: AuthProps,
+    playedGame: PlayedGameProps,
+    playedQuestionsWithChoices: [PlayedQuestionsWithChoicesProps],
+    score: ScoreProps,
 }) {
 
     return (
@@ -22,8 +24,8 @@ export default function MyGames({ auth, game, score }:{
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <h2>{game.title}</h2>
-                        <p>{game.description}</p>
+                        <h2>{playedGame.title}</h2>
+                        <p>{playedGame.description}</p>
                         <br/>
                         <p>Score: {score.score} / {score.question_count}</p>
                         {score.is_passed? (
@@ -35,6 +37,10 @@ export default function MyGames({ auth, game, score }:{
                     </div>
                 </div>
             </div>
+            <QuestionPlayedPreview 
+                playedGame={playedGame}
+                playedQuestionsWithChoices={playedQuestionsWithChoices}            
+            />
         </GameLayout>
     );
 }

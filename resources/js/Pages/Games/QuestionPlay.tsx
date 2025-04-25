@@ -8,7 +8,7 @@ import { useForm } from "@inertiajs/react";
 export default function QuestionPlay({playedGame, questionsWithChoices, playedQuestionsWithChoices}:{
     playedGame: PlayedGameProps
     questionsWithChoices: [QuestionsWithChoicesProps]
-    playedQuestionsWithChoices: [PlayedQuestionsWithChoicesProps] // Next feature
+    playedQuestionsWithChoices: [PlayedQuestionsWithChoicesProps] // Next feature (continue mid question)
 }){
 
     const {data, post, processing, recentlySuccessful } = useForm({

@@ -8,19 +8,18 @@ use Inertia\Inertia;
 
 Route::get('/', [GameController::class, 'home'])->name('home');
 
-// Play
-Route::get('/play/game/{game}', [GameController::class, 'play'])->name('public.play.game');
-Route::get('/play/game/{game}/question', [GameController::class, 'questionPlay'])->name('public.play.game.question');
-Route::get('/game/score/{game}', [GameController::class, 'gameScore'])->name('public.game.score');
-Route::post('/play/game/{game}/question', [GameController::class, 'startPlay'])->name('public.play.game.start');
-Route::post('/play/game/{playedGame}/question/answer', [GameController::class, 'storeQuestionAnswer'])->name('public.play.question.answer.store');
-
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    // Play
+    Route::get('/play/game/{game}', [GameController::class, 'play'])->name('public.play.game');
+    Route::get('/play/game/{game}/question', [GameController::class, 'questionPlay'])->name('public.play.game.question');
+    Route::get('/game/score/{game}', [GameController::class, 'gameScore'])->name('public.game.score');
+    Route::post('/play/game/{game}/question', [GameController::class, 'startPlay'])->name('public.play.game.start');
+    Route::post('/play/game/{playedGame}/question/answer', [GameController::class, 'storeQuestionAnswer'])->name('public.play.question.answer.store');
 
     // Game view
     Route::get('/games', [GameController::class, 'index'])->name('games.index');

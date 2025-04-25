@@ -94,8 +94,8 @@ export interface PlayedChoice {
 export type PlayedChoiceProps = PlayedChoice;
 
 export type PlayedQuestionsWithChoicesProps = {
-    question: PlayedQuestionProps;
-    choices: PlayedChoiceProps;
+    playedQuestion: PlayedQuestionProps;
+    playedChoices: PlayedChoiceProps;
 }
 
 export interface Score {
