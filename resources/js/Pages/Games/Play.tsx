@@ -4,9 +4,10 @@ import { AuthProps, GameProps, QuestionsWithChoicesProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
 
-export default function Play({game, status}: {
-    game: GameProps;
-    status: number;
+export default function Play({auth, game, status}: {
+    auth: AuthProps,
+    game: GameProps,
+    status: number
 }) {
     
     const { post, get, processing, recentlySuccessful } = useForm({
@@ -28,11 +29,12 @@ export default function Play({game, status}: {
     return (
         <GameLayout
             header={
-                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                        {game.title}
-                    </h2>
+                <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    {game.title}
+                </h2>
             }
-                >
+            auth={auth}
+        >
             <div className="py-12"> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

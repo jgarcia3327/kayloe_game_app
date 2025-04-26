@@ -1,7 +1,7 @@
 import GameLayout from "@/Layouts/GameLayout";
 import { AuthProps, GameProps, PlayedGameProps, PlayedQuestionsWithChoicesProps, ScoreProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import QuestionPlayedPreview from "./QuestionPlayedPreview";
+import QuestionPlayedPreview from "./Questions/Partials/QuestionPlayedPreview";
 
 export default function MyGames({ auth, playedGame, playedQuestionsWithChoices, score }:{
     auth: AuthProps,

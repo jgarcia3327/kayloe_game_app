@@ -86,7 +86,6 @@ class GameController extends Controller
             $game->update([
                 'title' => $request->title,
                 'description' => $request->description,
-                'image' => $request->image,
                 'passing_percent' => $request->passing_percent,
                 'time_in_sec' => $request->time_in_sec,
                 'is_active' => $request->is_active

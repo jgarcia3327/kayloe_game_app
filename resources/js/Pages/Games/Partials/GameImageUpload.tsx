@@ -30,7 +30,7 @@ export default function GameImageUpload({game, className=''}:{
         <>
             <div>
                 {game.image && 
-                <img src={'/storage/assets/images/games/'+game.image}/>
+                    <img src={'/storage/assets/images/games/'+game.image}/>
                 }
             </div>
             <form onSubmit={handleUpload} className={"mt-6 space-y-6 " + className} encType="multipart/form-data">

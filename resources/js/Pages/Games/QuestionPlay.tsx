@@ -1,13 +1,14 @@
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import GameLayout from "@/Layouts/GameLayout";
-import { ChoiceProps, GameProps, PlayedGameProps, PlayedQuestionsWithChoicesProps, QuestionsWithChoicesProps } from "@/types";
+import { AuthProps, ChoiceProps, GameProps, PlayedGameProps, PlayedQuestionsWithChoicesProps, QuestionsWithChoicesProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
 
-export default function QuestionPlay({playedGame, questionsWithChoices, playedQuestionsWithChoices}:{
-    playedGame: PlayedGameProps
-    questionsWithChoices: [QuestionsWithChoicesProps]
+export default function QuestionPlay({auth, playedGame, questionsWithChoices, playedQuestionsWithChoices}:{
+    auth: AuthProps,
+    playedGame: PlayedGameProps,
+    questionsWithChoices: [QuestionsWithChoicesProps],
     playedQuestionsWithChoices: [PlayedQuestionsWithChoicesProps] // Next feature (continue mid question)
 }){
 
@@ -30,9 +31,15 @@ export default function QuestionPlay({playedGame, questionsWithChoices, playedQu
                         {playedGame.title}
                     </h2>
                 }
+            auth={auth}
                 >
             <div className="py-12"> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                    {playedGame.image && 
+                    <>
+                        <img src={'/storage/assets/images/games/'+playedGame.image}/>
+                    </>
+                    }
                     <p className="text-xl">{playedGame.description}</p>
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <form onSubmit={handleQuestionAnswer} className="mt-6 space-y-6">
