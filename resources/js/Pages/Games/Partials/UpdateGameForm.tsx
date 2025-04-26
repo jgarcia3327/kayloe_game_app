@@ -31,7 +31,7 @@ export default function UpdateGameForm({ auth, game, questionCount = 0, classNam
         });
     };
 
-    const handleDelete = (e:any, game: GameProps) => {
+    const handleDelete = (e:any) => {
         e.preventDefault();
         let c = confirm("Confirm Delete:\n" + game.title);
         if (c === true) {
@@ -48,6 +48,10 @@ export default function UpdateGameForm({ auth, game, questionCount = 0, classNam
                     Update game info.
                 </p>
             </header>
+
+            <GameImageUpload
+                game={game}
+            />
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
@@ -129,7 +133,7 @@ export default function UpdateGameForm({ auth, game, questionCount = 0, classNam
                                 Add New Question
                             </a>
                             <a 
-                                onClick = {(e) => handleDelete(e, game)}
+                                onClick = {(e) => handleDelete}
                                 className="cursor-pointer inline-flex px-4 py-2 col-span-1 col-end-7 bg-red-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
                             >
                                 Delete game
@@ -148,10 +152,6 @@ export default function UpdateGameForm({ auth, game, questionCount = 0, classNam
                     }
                 </div>
             </form>
-            <hr/>
-            <GameImageUpload
-                game={game}
-            />
         </section>
     );
 }

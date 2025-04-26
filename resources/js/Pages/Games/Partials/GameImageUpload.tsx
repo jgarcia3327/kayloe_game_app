@@ -9,41 +9,66 @@ export default function GameImageUpload({game, className=''}:{
     className?: string
 }){
 
-    const { data, setData, post, processing, recentlySuccessful } = useForm({
-        image : null
+    const { data, setData, delete: destroy, post, processing, recentlySuccessful } = useForm<any>({
+        image: undefined
     }); 
 
-    const imageUploadHandler = (e:any) => {
+    const handleUpload = (e:any) => {
         e.preventDefault();
         post(route('game.image.store', game.id));
     };
 
-    return (
-        <form onSubmit={imageUploadHandler} className={"mt-6 space-y-6 " + className} encType="multipart/form-data">
-            <div>
-                <InputLabel htmlFor="image" value="Image" />
+    const handleDelete = (e:any) => {
+        e.preventDefault();
+        let c = confirm("Confirm image delete:\n" + game.title);
+        if (c === true) {
+            destroy(route('game.image.delete', game.id));
+        }
+    }
 
-                <input
-                    type="file"
-                    id="image"
-                    className="mt-1 block w-full mb-2"
-                    accept="image/png, image/gif, image/jpeg"
-                    onChange={(e) => {
-                        if (e.target.files && e.target.files[0])
-                            setData('image', e.target.files[0]);
-                    }}
-                />
-                <PrimaryButton disabled={processing} className="bg-purple-800">Upload Image</PrimaryButton> 
-                <Transition
-                    show={recentlySuccessful}
-                    enter="transition ease-in-out"
-                    enterFrom="opacity-0"
-                    leave="transition ease-in-out"
-                    leaveTo="opacity-0"
-                >
-                    <p className="text-sm text-gray-600">Uploaded.</p>
-                </Transition>
+    return (
+        <>
+            <div>
+                {game.image && 
+                <img src={'/storage/assets/images/games/'+game.image}/>
+                }
             </div>
-        </form>
+            <form onSubmit={handleUpload} className={"mt-6 space-y-6 " + className} encType="multipart/form-data">
+                <div>
+                    <InputLabel htmlFor="image" value="Image" />
+
+                    <input
+                        type="file"
+                        id="image"
+                        className="mt-1 block w-full mb-2"
+                        accept="image/png, image/gif, image/jpeg"
+                        onChange={(e) => {
+                            setData('image', e.target.files?.[0]);
+                        }}
+                    />
+                    <PrimaryButton disabled={processing} className="bg-purple-800">
+                        {game.image? <>Update Image</> : <>Upload Image</>}
+                    </PrimaryButton> 
+                    {game.image && 
+                        <PrimaryButton 
+                            disabled={processing} 
+                            className="ml-3 bg-red-600"
+                            onClick={handleDelete}
+                        >
+                            Delete Image
+                        </PrimaryButton> 
+                    }
+                    <Transition
+                        show={recentlySuccessful}
+                        enter="transition ease-in-out"
+                        enterFrom="opacity-0"
+                        leave="transition ease-in-out"
+                        leaveTo="opacity-0"
+                    >
+                        <p className="text-sm text-gray-600">Uploaded.</p>
+                    </Transition>
+                </div>
+            </form>
+        </>
     )
 }

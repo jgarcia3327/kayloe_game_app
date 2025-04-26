@@ -89,7 +89,7 @@ export default function CreateQuestionForm({game, question, choices, className='
                     />
                 </div>
 
-                <div>
+                {/* <div>
                     <InputLabel htmlFor="image" value="Image" />
 
                     <TextInput
@@ -98,7 +98,7 @@ export default function CreateQuestionForm({game, question, choices, className='
                         value={data.image}
                         onChange={(e) => setData('image', e.target.value)}
                     />
-                </div>
+                </div> */}
 
                 <div>
                     <InputLabel htmlFor="correct_percent" value="Correct Percent" />

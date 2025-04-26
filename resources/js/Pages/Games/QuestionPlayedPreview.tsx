@@ -6,11 +6,10 @@ export default function QuestionPlayedPreview({playedGame, playedQuestionsWithCh
     playedQuestionsWithChoices: [PlayedQuestionsWithChoicesProps]
 }){
 
-    console.log(playedQuestionsWithChoices);
     return (
         <div className="py-12"> 
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <p className="text-md">Question{playedQuestionsWithChoices.length > 1 && <>s</>}:</p>
+                <p className="text-md">Answer{playedQuestionsWithChoices.length > 1 && <>s</>} to question{playedQuestionsWithChoices.length > 1 && <>s</>}:</p>
                 <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <form className="space-y-6">
                         {playedQuestionsWithChoices.map((q: PlayedQuestionsWithChoicesProps) =>

@@ -53,7 +53,7 @@ export default function CreateChoiceForm({className=''}) {
                             />
                         </div>
             
-                        <div>
+                        {/* <div>
                             <InputLabel htmlFor={`choice-${index}-image`} value="Image" />
             
                             <TextInput
@@ -61,7 +61,7 @@ export default function CreateChoiceForm({className=''}) {
                                 name={`choice.${index}.image`}
                                 className="mt-1 block w-full"
                             />
-                        </div> 
+                        </div>  */}
             
                         <div className="mt-2">
                             <InputLabel htmlFor={`choice-${index}-is_correct`} value="Is Correct?" className="inline" />

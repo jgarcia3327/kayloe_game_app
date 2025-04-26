@@ -12,3 +12,6 @@ install mysql: brew install mysql
 create game_app DB and run php artisan migrate:refresh
 install node: brew install node
 install vite: npm create vite@latest
+
+- Link storage to public
+run php artisan storage:link

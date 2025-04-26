@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/games/{game}', [GameController::class, 'delete'])->name('game.delete');
     Route::post('/games', [GameController::class, 'store'])->name('game.store');
     Route::post('/games/edit/{game}', [GameController::class, 'storeImage'])->name('game.image.store');
+    Route::delete('/games/edit/{game}', [GameController::class, 'deleteImage'])->name('game.image.delete');
 
     // Question view
     Route::get('/game/question/{game}', [GameQuestionController::class, 'create'])->name('game.question.create');

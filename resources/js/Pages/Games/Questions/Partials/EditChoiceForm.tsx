@@ -43,10 +43,10 @@ export default function EditChoiceForm({choices, className=''}:{
                             <input {...register(`choice.${index}.id`)} type="hidden"/>
                         </div>
             
-                        <div>
+                        {/* <div>
                             <InputLabel htmlFor={`choice.${index}.image`} value="Image"/>
                             <input {...register(`choice.${index}.image`)} className="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 mt-1 block w-full"/>
-                        </div> 
+                        </div>  */}
             
                         <div className="mt-2">
                             <InputLabel htmlFor={`choice.${index}.is_correct`} value="Is Correct?" className="inline" />

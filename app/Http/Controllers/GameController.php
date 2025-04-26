@@ -13,6 +13,7 @@ use App\Models\Score;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -108,13 +109,30 @@ class GameController extends Controller
         return $this->edit($game);
     }
 
-    public function storeImage(Request $request, Game $game)
+    public function storeImage(Request $request, Game $game) : void
     {
+        // Delete existing file
+        if (!empty($game->image)) Storage::disk('public_game_image')->delete($game->image);
+
+        // Save file
         $file = $request->file('image');
         $filename = $file->storeAs($game->id.'.' . $file->getClientOriginalExtension(), ['disk' => 'public_game_image']);
-        // Store $filename to DB TODO
-        dd($filename);
-        // Redirect here TODO
+
+        // Store $filename to DB
+        $game->update([
+            'image' => $filename
+        ]);
+    }
+
+    public function deleteImage(Request $request, Game $game) : void
+    {
+        // Delete file
+        if (!empty($game->image)) Storage::disk('public_game_image')->delete($game->image);
+
+        // Update DB
+        $game->update([
+            'image' => null
+        ]);
     }
 
     public function storeQuestionAnswer(PlayedGame $playedGame, Request $request) 
