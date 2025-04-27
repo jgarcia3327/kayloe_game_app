@@ -26,6 +26,13 @@ export default function Play({auth, game, status}: {
         get(route("public.game.score", game.id));
     }
 
+    const playAgainHandler = (e:any) => {
+        //
+        e.preventDefault();
+        alert("TODO");
+    }
+
+
     return (
         <GameLayout
             header={
@@ -63,13 +70,22 @@ export default function Play({auth, game, status}: {
                             </PrimaryButton> 
                         }
                         {status === 2 && 
-                            <PrimaryButton 
-                                className="col-span-1 col-start-2 text-center inline-grid bg-gray-600" 
+                            <>
+                                <PrimaryButton 
+                                className="col-span-1 col-start-1 text-center inline-grid bg-gray-600" 
                                 disabled={processing}
                                 onClick={scorePlayHandler}
-                            >
-                                See score
-                            </PrimaryButton>
+                                >
+                                    See score
+                                </PrimaryButton>
+                                <PrimaryButton 
+                                className="col-span-1 col-start-2 text-center inline-grid bg-green-900" 
+                                disabled={processing}
+                                onClick={playAgainHandler}
+                                >
+                                    Play again
+                                </PrimaryButton>
+                            </>
                         }
                         <Transition
                             show={recentlySuccessful}
