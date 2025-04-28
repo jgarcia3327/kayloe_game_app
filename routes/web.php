@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/play/game/{game}/question', [GameController::class, 'questionPlay'])->name('public.play.game.question');
     Route::get('/game/score/{game}', [GameController::class, 'gameScore'])->name('public.game.score');
     Route::post('/play/game/{game}/question', [GameController::class, 'startPlay'])->name('public.play.game.start');
+    Route::post('/play/game/{game}/question', [GameController::class, 'startPlayAgain'])->name('public.play.again.game.start');
     Route::post('/play/game/{playedGame}/question/answer', [GameController::class, 'storeQuestionAnswer'])->name('public.play.question.answer.store');
 
     // Game view

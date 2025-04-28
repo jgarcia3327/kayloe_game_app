@@ -27,9 +27,7 @@ export default function Play({auth, game, status}: {
     }
 
     const playAgainHandler = (e:any) => {
-        //
-        e.preventDefault();
-        alert("TODO");
+        post(route('public.play.again.game.start', game.id));
     }
 
 

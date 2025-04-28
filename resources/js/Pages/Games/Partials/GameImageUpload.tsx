@@ -3,6 +3,7 @@ import InputLabel from "../../../Components/InputLabel";
 import { Transition } from "@headlessui/react";
 import PrimaryButton from "../../../Components/PrimaryButton";
 import { GameProps } from "@/types";
+import GameImageDisplay from "./GameImageDisplay";
 
 export default function GameImageUpload({game, className=''}:{
     game: GameProps,
@@ -29,11 +30,7 @@ export default function GameImageUpload({game, className=''}:{
     return (
         <>
             <div>
-                {game.image && 
-                    <div className="flex items-center justify-center">
-                        <img className="w-full max-w-3xl gap-4" src={'/storage/assets/images/games/'+game.image}/>
-                    </div>
-                }
+                <GameImageDisplay game={game}/>
             </div>
             <form onSubmit={handleUpload} className={"mt-6 space-y-6 " + className} encType="multipart/form-data">
                 <div>

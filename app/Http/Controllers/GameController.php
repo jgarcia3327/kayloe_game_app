@@ -211,8 +211,44 @@ class GameController extends Controller
         ]);
     }
 
+    public function startPlayAgain(Game $game): Response
+    {
+        $score = Score::select('played_game_id')->where('game_id', $game->id)->where('user_id', Auth::user()->id)->get();
+        // Get played game
+        $playedGame = PlayedGame::where('game_id', $game->id)->whereNotIn('id', $score->pluck('played_game_id'))->first();
+        $questionsWithChoices = $this->getQuestionsWithChoices($game);
+        $playedQuestionsWithChoices = null;
+        if (empty($playedGame)) {
+            $playedGame = PlayedGame::create([
+                'user_id' => Auth::user()? Auth::user()->id : $this->getGuestUser()->id,
+                'title' => $game->title,
+                'description' => $game->description,
+                'image' => $game->image,
+                'passing_percent' => $game->passing_percent,
+                'time_in_sec' => $game->time_in_sec,
+                'game_id' => $game->id,
+                'author_user_id' => $game->user_id,
+                'guest_user_id' => "Cookie id here(TODO)"
+            ]);
+        }
+        else {
+            $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGame->id);
+        }
+
+        return Inertia::render('Games/QuestionPlay', [
+            'playedGame' => $playedGame,
+            'questionsWithChoices' => $questionsWithChoices,
+            'playedQuestionsWithChoices' => $playedQuestionsWithChoices // Next feature
+        ]);
+    }
+
     public function startPlay(Game $game): Response
     {
+        // Add score check and redirect
+        $score = Score::where('game_id', $game->id)->where('user_id', Auth::user()->id)->first();
+        if (!empty($score))
+            return $this->gameScore($game);
+
         // Get played game
         $playedGame = PlayedGame::where('game_id', $game->id)->first();
         $questionsWithChoices = $this->getQuestionsWithChoices($game);
@@ -263,14 +299,21 @@ class GameController extends Controller
 
     public function gameScore(Game $game) : Response
     {
-        // TODO pull multiple scores from played game
-        $playedGame = PlayedGame::where('game_id', $game->id)->where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->first();
-        $score = Score::where('game_id', $game->id)->where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->first();
-        $playedQuestionsWithChoices = $this->getPlayedQuestionsWithChoices($playedGame->id);
+        $scores = Score::where('game_id', $game->id)->where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        $playedGames = PlayedGame::whereIn('id', $scores->pluck('played_game_id'))->orderBy('created_at', 'DESC')->get();
+        $playedGamesWithQuesionsAndChoices = [];
+        $i = 0;
+        foreach ($playedGames AS $pg) {
+            array_push($playedGamesWithQuesionsAndChoices, (object)array(
+                'score' => $scores[$i],
+                'playedGame' => $pg,
+                'playedQuestionsWithChoices' => $this->getPlayedQuestionsWithChoices($pg->id)
+            ));
+            $i++;
+        }
         return Inertia::render('Games/Score', [
-            'score' => $score,
-            'playedGame' => $playedGame,
-            'playedQuestionsWithChoices' => $playedQuestionsWithChoices
+            'game' => $game,
+            'playedGamesWithQuesionsAndChoices' => $playedGamesWithQuesionsAndChoices
         ]);
     }
 

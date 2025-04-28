@@ -4,6 +4,7 @@ import GameLayout from "@/Layouts/GameLayout";
 import { AuthProps, ChoiceProps, GameProps, PlayedGameProps, PlayedQuestionsWithChoicesProps, QuestionsWithChoicesProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
+import GameImageDisplay from "./Partials/GameImageDisplay";
 
 export default function QuestionPlay({auth, playedGame, questionsWithChoices, playedQuestionsWithChoices}:{
     auth: AuthProps,
@@ -35,11 +36,7 @@ export default function QuestionPlay({auth, playedGame, questionsWithChoices, pl
                 >
             <div className="py-12"> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    {playedGame.image && 
-                        <div className="flex items-center justify-center">
-                            <img className="w-full max-w-3xl gap-4" src={'/storage/assets/images/games/'+playedGame.image}/>
-                        </div>
-                    }
+                    <GameImageDisplay game={playedGame} />
                     <p className="text-xl">{playedGame.description}</p>
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <form onSubmit={handleQuestionAnswer} className="mt-6 space-y-6">

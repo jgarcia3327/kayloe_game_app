@@ -67,7 +67,6 @@ export type QuestionsWithChoicesProps = {
     choices: ChoiceProps;
 }
 
-// FIXME
 export interface PlayedQuestion {
     map(arg0: (played_question: PlayedQuestionProps) => JSX.Element): import("react").ReactNode;
     id: number;
@@ -107,6 +106,13 @@ export interface Score {
     score: number;
     question_count: number;
     is_passed: boolean;
+    created_at: Date;
 }
 
 export type ScoreProps = Score;
+
+export type PlayedGamesWithQuesionsAndChoicesProps = {
+    score: ScoreProps;
+    playedGame: PlayedGameProps;
+    playedQuestionsWithChoices: [PlayedQuestionsWithChoicesProps];
+}
