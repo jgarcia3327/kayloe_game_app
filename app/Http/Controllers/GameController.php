@@ -19,6 +19,14 @@ use Inertia\Response;
 
 class GameController extends Controller
 {
+    public function welcome(): Response
+    {
+
+        return Inertia::render('Welcome', [
+            //
+        ]);
+    }
+
     public function home(): Response
     {
         $games = Game::orderBy('created_at', 'DESC')->get();

@@ -6,7 +6,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', [GameController::class, 'home'])->name('home');
+// Route::get('/', [GameController::class, 'home'])->name('home');
+Route::get('/', [GameController::class, 'welcome'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
