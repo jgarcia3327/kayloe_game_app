@@ -23,7 +23,7 @@ export default function Home({ auth, games, scores}: {
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                         <header className="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                             <div className="flex lg:col-start-2 lg:justify-center">
-                                Game App
+                                Games App
                             </div>
                         </header>
 
