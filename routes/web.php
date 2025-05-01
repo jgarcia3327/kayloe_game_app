@@ -1,13 +1,14 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameQuestionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', [GameController::class, 'home'])->name('home');
-Route::get('/', [GameController::class, 'welcome'])->name('welcome');
+Route::get('/', [MainController::class, 'home'])->name('home');
+Route::get('/games', [GameController::class, 'index'])->name('games.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -24,7 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/play/game/{playedGame}/question/answer', [GameController::class, 'storeQuestionAnswer'])->name('public.play.question.answer.store');
 
     // Game view
-    Route::get('/games', [GameController::class, 'index'])->name('games.index');
     Route::get('games/create', [GameController::class, 'create'])->name('game.create');
     Route::get('/games/edit/{game}', [GameController::class, 'edit'])->name('game.edit');
     Route::get('/games/user/{user}', [GameController::class, 'user'])->name('games.user');

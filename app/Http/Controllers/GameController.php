@@ -19,29 +19,17 @@ use Inertia\Response;
 
 class GameController extends Controller
 {
-    public function welcome(): Response
-    {
-
-        return Inertia::render('Welcome', [
-            //
-        ]);
-    }
 
     public function home(): Response
     {
-        $games = Game::orderBy('created_at', 'DESC')->get();
-
-        return Inertia::render('Home', [
-            'games' => $games,
-            'scores' => $this->getScores($games)
-        ]);
+        return $this->index();
     }
 
     public function index(): Response
     {
         $games = Game::orderBy('created_at', 'DESC')->get();
 
-        return Inertia::render('Games/All', [
+        return Inertia::render('Games/Home', [
             'games' => $games,
             'scores' => $this->getScores($games)
         ]);
