@@ -3,12 +3,14 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameQuestionController;
+use App\Http\Controllers\ShoppingItemController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/games', [GameController::class, 'index'])->name('games.index');
+Route::get('/shopping', [ShoppingItemController::class, 'index'])->name('shopping.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

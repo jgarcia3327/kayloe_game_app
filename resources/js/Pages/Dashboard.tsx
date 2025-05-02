@@ -1,4 +1,4 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedGameLayout';
 import { PageProps } from '@/types';
 import { Head } from '@inertiajs/react';
 
