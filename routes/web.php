@@ -18,7 +18,15 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-    // Play
+    // Shopping
+    Route::get('/shopping/create', [ShoppingItemController::class, 'create'])->name('shopping.create');
+    Route::get('/shopping/edit/{shoppingItem}', [ShoppingItemController::class, 'edit'])->name('shopping.edit');
+    Route::post('/shopping', [ShoppingItemController::class, 'store'])->name('shopping.store');
+    Route::patch('/shopping/{shoppingItem}', [ShoppingItemController::class, 'update'])->name('shopping.update');
+    Route::delete('/shopping/{shoppingItem}', [ShoppingItemController::class, 'delete'])->name('shopping.delete');
+    Route::post('/shopping/edit/{shoppingItem}', [ShoppingItemController::class, 'storeImage'])->name('shopping.image.store');
+
+    // Game play
     Route::get('/play/game/{game}', [GameController::class, 'play'])->name('public.play.game');
     Route::get('/play/game/{game}/question', [GameController::class, 'questionPlay'])->name('public.play.game.question');
     Route::get('/game/score/{game}', [GameController::class, 'gameScore'])->name('public.game.score');
@@ -27,11 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/play/game/{playedGame}/question/answer', [GameController::class, 'storeQuestionAnswer'])->name('public.play.question.answer.store');
 
     // Game view
-    Route::get('games/create', [GameController::class, 'create'])->name('game.create');
+    Route::get('/games/dashboard', [GameController::class, 'dashboard'])->name('game.dashboard');
+    Route::get('/games/create', [GameController::class, 'create'])->name('game.create');
     Route::get('/games/edit/{game}', [GameController::class, 'edit'])->name('game.edit');
     Route::get('/games/user/{user}', [GameController::class, 'user'])->name('games.user');
     Route::get('/games/my/games', [GameController::class, 'my_games'])->name('my.games');
-    // Game process(void)
     Route::patch('/games/{game}', [GameController::class, 'update'])->name('game.update');
     Route::delete('/games/{game}', [GameController::class, 'delete'])->name('game.delete');
     Route::post('/games', [GameController::class, 'store'])->name('game.store');
@@ -41,7 +49,6 @@ Route::middleware('auth')->group(function () {
     // Question view
     Route::get('/game/question/{game}', [GameQuestionController::class, 'create'])->name('game.question.create');
     Route::get('/game/question/edit/{question}', [GameQuestionController::class, 'edit'])->name('game.question.edit');
-    // Question process(void)
     Route::patch('/game/question/{question}', [GameQuestionController::class, 'update'])->name('game.question.update');
     Route::delete('/game/question/{question}', [GameQuestionController::class, 'delete'])->name('game.question.delete');
     Route::post('/game/question', [GameQuestionController::class, 'store'])->name('game.question.store');
