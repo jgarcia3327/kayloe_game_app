@@ -44,10 +44,10 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
     return (
         <section className={'max-w-full ' + className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">Game Information</h2>
+                <h2 className="text-lg font-medium text-gray-900">Shopping item information</h2>
 
                 <p className="mt-1 text-sm text-gray-600">
-                    Update game info.
+                    Update shopping item info.
                 </p>
             </header>
 

@@ -12,10 +12,10 @@ export default function Edit({ auth, shoppingItem, shoppingImages }:{
 
     return (
         <ShoppingLayout
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Shopping ID: {shoppingItem.id}</h2>}    
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Shopping item ID: {shoppingItem.id}</h2>}    
             auth={auth}     
             >
-            <Head title={'Game ID: ' + shoppingItem.id} />
+            <Head title={'Shopping ID: ' + shoppingItem.id} />
 
             <div className="py-12"> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">

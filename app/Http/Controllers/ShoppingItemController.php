@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ShoppingItemController extends Controller
 {
@@ -98,5 +99,15 @@ class ShoppingItemController extends Controller
             'name' => $filename,
             'is_active' => true
         ]);
+    }
+
+    public function deleteImage(ShoppingImage $shoppingImage) : void
+    {
+        // Delete file
+        if (!empty($shoppingImage->name)) {
+            Storage::disk('public_shopping_image')->delete($shoppingImage->name);
+            // Update DB
+            $shoppingImage->delete();
+        }
     }
 }

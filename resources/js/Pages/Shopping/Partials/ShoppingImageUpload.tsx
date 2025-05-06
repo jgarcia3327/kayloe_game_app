@@ -18,12 +18,15 @@ export default function ShoppingImageUpload({shoppingItemId, shoppingImages, cla
     const handleUpload = (e:any) => {
         e.preventDefault();
         post(route('shopping.image.store', shoppingItemId));
+        data.image = undefined;
     };
+
+    
 
     return (
         <>
             <div>
-                <ShoppingImageDisplay shoppingImages={shoppingImages}/>
+                <ShoppingImageDisplay shoppingImages={shoppingImages} isOwner={true}/>
             </div>
             <form onSubmit={handleUpload} className={"mt-6 space-y-6 " + className} encType="multipart/form-data">
                 <div>
@@ -39,7 +42,7 @@ export default function ShoppingImageUpload({shoppingItemId, shoppingImages, cla
                         }}
                     />
                     
-                    <PrimaryButton disabled={processing} className="bg-purple-800">
+                    <PrimaryButton disabled={data.image? false : true} className="bg-purple-800">
                         Upload Image
                     </PrimaryButton> 
                     <Transition

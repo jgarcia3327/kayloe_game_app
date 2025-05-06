@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/shopping', [ShoppingItemController::class, 'store'])->name('shopping.store');
     Route::patch('/shopping/{shoppingItem}', [ShoppingItemController::class, 'update'])->name('shopping.update');
     Route::delete('/shopping/{shoppingItem}', [ShoppingItemController::class, 'delete'])->name('shopping.delete');
-    Route::post('/shopping/edit/{shoppingItem}', [ShoppingItemController::class, 'storeImage'])->name('shopping.image.store');
+    Route::post('/shopping/image/{shoppingItem}', [ShoppingItemController::class, 'storeImage'])->name('shopping.image.store');
+    Route::delete('/shopping/image/{shoppingImage}', [ShoppingItemController::class, 'deleteImage'])->name('shopping.image.delete');
 
     // Game play
     Route::get('/play/game/{game}', [GameController::class, 'play'])->name('public.play.game');
