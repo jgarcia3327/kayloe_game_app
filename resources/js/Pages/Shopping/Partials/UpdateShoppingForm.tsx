@@ -8,6 +8,8 @@ import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import ShoppingImageUpload from './ShoppingImageUpload';
 import { ShoppingImageProps, ShoppingItemProps } from '@/types/shopping';
+import DatePicker from '@/Components/DatePicker';
+import { format, parse } from "date-fns";
 
 export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages, className = '' }:{
     auth: AuthProps,
@@ -28,6 +30,13 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
 
     const submit = (e:any) => {
         e.preventDefault();
+
+        let formData = new FormData(e.target);
+        let objEntries = Object.fromEntries(formData.entries());
+        // console.log(objEntries);
+        // console.log(objEntries.draw_date);
+        // console.log(parse(objEntries.draw_date, "PPP", new Date()));
+        data.draw_date = parse(objEntries.draw_date, "PPP", new Date()).toISOString().slice(0, 19).replace('T', ' ');
         patch(route('shopping.update', shoppingItem.id), {
             preserveScroll: true
         });
@@ -104,15 +113,9 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="ticket_price" value="Ticket price" />
+                    <InputLabel htmlFor="draw_date" value="Draw date" />
 
-                    <TextInput
-                        type="number"
-                        id="ticket_price"
-                        className="mt-1 block w-full"
-                        value={data.ticket_price}
-                        onChange={(e) => setData('ticket_price', parseFloat(e.target.value))}
-                    />
+                    <DatePicker id="draw_date" value={data.draw_date? data.draw_date : new Date()}></DatePicker>
                 </div>
 
                 <div>
@@ -125,10 +128,28 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
                     />
                 </div>
 
+                <div>
+                    <InputLabel htmlFor="ticket_price" value="Ticket price" />
+
+                    <TextInput
+                        type="number"
+                        id="ticket_price"
+                        className="mt-1 block w-full"
+                        value={data.ticket_price}
+                        onChange={(e) => setData('ticket_price', parseFloat(e.target.value))}
+                    />
+                </div>
+
                 <div className="grid items-center gap-4 w-full">
                     {auth.user.id === shoppingItem.user_id ? 
                         <div className="grid grid-cols-6 gap-4">
                             <PrimaryButton className="col-span-2" disabled={processing}>Save Changes</PrimaryButton> 
+                            <a 
+                                hrer="#"
+                                className="cursor-pointer inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
+                            >
+                                View item
+                            </a>
                             <a 
                                 onClick = {(e) => handleDelete}
                                 className="cursor-pointer inline-flex px-4 py-2 col-span-1 col-end-7 bg-red-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 

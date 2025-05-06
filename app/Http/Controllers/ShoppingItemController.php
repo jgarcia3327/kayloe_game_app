@@ -55,6 +55,7 @@ class ShoppingItemController extends Controller
 
     public function update(ShoppingItem $shoppingItem, Request $request): void
     {
+        // dd($request);
         if ($shoppingItem->user_id === Auth::user()->id) {
             $shoppingItem->update([
                 'title' => $request->title,
