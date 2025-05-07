@@ -19,6 +19,9 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     // Shopping
+    Route::get('/shopping/all', [ShoppingItemController::class, 'all'])->name('shopping.all');
+    Route::get('/shopping/mylist', [ShoppingItemController::class, 'myList'])->name('shopping.mylist');
+    Route::get('/shopping/{shoppingItem}', [ShoppingItemController::class, 'view'])->name('shopping.view');
     Route::get('/shopping/create', [ShoppingItemController::class, 'create'])->name('shopping.create');
     Route::get('/shopping/edit/{shoppingItem}', [ShoppingItemController::class, 'edit'])->name('shopping.edit');
     Route::post('/shopping', [ShoppingItemController::class, 'store'])->name('shopping.store');

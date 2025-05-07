@@ -19,6 +19,30 @@ class ShoppingItemController extends Controller
         ]);
     }
 
+    public function all(): Response
+    {
+        $shoppingItems = ShoppingItem::where('is_active', 1)->get();
+        return Inertia::render('Shopping/All', [
+            'shoppingItems' => $shoppingItems,
+        ]);
+    }
+
+    public function myList(): Response
+    {
+        $shoppingItems = ShoppingItem::where('user_id', Auth::user()->id)->get();
+        return Inertia::render('Shopping/All', [
+            'shoppingItems' => $shoppingItems,
+        ]);
+    }
+
+    public function view(ShoppingItem $shoppingItem): Response
+    {
+        return Inertia::render('Shopping/View', [
+            'shoppingItem' => $shoppingItem,
+            'shoppingImages' => $this->getImages($shoppingItem->id)
+        ]);
+    }
+
     public function create()
     {
         if (!Auth::check())
@@ -44,11 +68,10 @@ class ShoppingItemController extends Controller
 
     public function edit(ShoppingItem $shoppingItem): Response
     {
-        $shoppingImages = ShoppingImage::where('shopping_item_id', $shoppingItem->id)->get();
 
         return Inertia::render('Shopping/Edit', [
             'shoppingItem' => $shoppingItem,
-            'shoppingImages' => $shoppingImages
+            'shoppingImages' => $this->getImages($shoppingItem->id)
         ]);
 
     }
@@ -110,5 +133,9 @@ class ShoppingItemController extends Controller
             // Update DB
             $shoppingImage->delete();
         }
+    }
+
+    private function getImages($shoppingId) {
+        return ShoppingImage::where('shopping_item_id', $shoppingId)->get();
     }
 }

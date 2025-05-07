@@ -145,7 +145,7 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
                         <div className="grid grid-cols-6 gap-4">
                             <PrimaryButton className="col-span-2" disabled={processing}>Save Changes</PrimaryButton> 
                             <a 
-                                hrer="#"
+                                href={route('shopping.view', shoppingItem.id)}
                                 className="cursor-pointer inline-flex px-4 py-2 col-span-1 bg-green-300 rounded-md items-center border border-transparent text-sm font-semibold uppercase" 
                             >
                                 View item

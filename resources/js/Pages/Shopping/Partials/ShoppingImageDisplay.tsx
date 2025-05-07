@@ -93,7 +93,7 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner}:{
                 <img
                     src={'/storage/assets/images/shopping/' + i.name}
                     alt={"image " + index}
-                    className="max-h-96 object-center"
+                    className="inline max-h-96 object-center"
                 />
                 {isOwner && (
                   <div className="absolute inset-0 grid h-full w-full">

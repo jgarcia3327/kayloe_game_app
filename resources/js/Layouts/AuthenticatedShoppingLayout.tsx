@@ -34,16 +34,10 @@ export default function Authenticated({
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    href="#"
-                                    active={route().current('games.index')}
+                                    href={route('shopping.all')}
+                                    active={route().current('shopping.all')}
                                 >
                                     All Shopping items
-                                </NavLink>
-                                <NavLink
-                                    href="#"
-                                    active={route().current('my.*')}
-                                >
-                                    My Items
                                 </NavLink>
                             </div>
                             
