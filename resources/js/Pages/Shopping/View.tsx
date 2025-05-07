@@ -3,12 +3,22 @@ import { AuthProps } from "@/types";
 import { ShoppingImageProps, ShoppingItemProps } from "@/types/shopping";
 import ShoppingImageUpload from "./Partials/ShoppingImageUpload";
 import ShoppingImageDisplay from "./Partials/ShoppingImageDisplay";
+import { useForm } from "@inertiajs/react";
 
 export default function View({auth, shoppingItem, shoppingImages}:{
     auth: AuthProps,
     shoppingItem: ShoppingItemProps,
     shoppingImages?: ShoppingImageProps
 }) {
+
+    const { post, processing, recentlySuccessful } = useForm({
+                //
+    });
+
+    const ticketBuyHandler = (shoppingItemId:number) => {
+        post(route("ticket.buy", shoppingItemId));
+    }
+
     return (
         <ShoppingLayout
             header={
@@ -27,7 +37,15 @@ export default function View({auth, shoppingItem, shoppingImages}:{
                         <p className="text-xl">{shoppingItem.description}</p>
                         <p className="mt-4">Ticket Price: {shoppingItem.ticket_price}</p>
                         <p className="mt-4">Ticket count: {shoppingItem.ticket_count}</p>
-                        <p className="mt-4">Ticket available: TODO</p>
+                        <p className="mt-4">
+                            Ticket available: TODO | 
+                            <a 
+                                className="cursor-pointer ml-2 border-x-8 border-gray-600 text-center bg-gray-600 rounded-md" 
+                                onClick={() => ticketBuyHandler(shoppingItem.id)}
+                            >
+                                Buy ticket
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

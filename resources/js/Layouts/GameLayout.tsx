@@ -1,7 +1,7 @@
 import { AuthProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import AuthenticatedGameLayout from "./AuthenticatedGameLayout";
-import PublicLayout from "./PublicLayout";
+import GameAuthenticatedLayout from "./GameAuthenticatedLayout";
+import GamePublicLayout from "./GamePublicLayout";
 import { PropsWithChildren, ReactNode } from "react";
 
 export default function GameLayout({
@@ -12,21 +12,21 @@ export default function GameLayout({
     return (
         <>
         {auth?.user? (
-            <AuthenticatedGameLayout
+            <GameAuthenticatedLayout
                 header={header}
             >
             
                 <Head title="Play On" />
                 <>{children}</>
-            </AuthenticatedGameLayout>
+            </GameAuthenticatedLayout>
         ):(
-            <PublicLayout
+            <GamePublicLayout
                 header={header}
             >
             
                 <Head title="Welcome" />
                 <>{children}</>
-            </PublicLayout>
+            </GamePublicLayout>
         )}
         </>
     );

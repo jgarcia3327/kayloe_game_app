@@ -1,4 +1,4 @@
-import AuthenticatedShoppingLayout from '@/Layouts/AuthenticatedShoppingLayout';
+import AuthenticatedShoppingLayout from '@/Layouts/ShoppingAuthenticatedLayout';
 import { PageProps } from '@/types';
 import { Head } from '@inertiajs/react';
 

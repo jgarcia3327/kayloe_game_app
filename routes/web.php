@@ -4,13 +4,18 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameQuestionController;
 use App\Http\Controllers\ShoppingItemController;
+use App\Http\Controllers\ShoppingTicketController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [MainController::class, 'home'])->name('home');
+
 Route::get('/games', [GameController::class, 'index'])->name('games.index');
+
 Route::get('/shopping', [ShoppingItemController::class, 'index'])->name('shopping.index');
+Route::get('/shopping/all', [ShoppingItemController::class, 'all'])->name('shopping.all');
+Route::get('/shopping/{shoppingItem}', [ShoppingItemController::class, 'view'])->name('shopping.view');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -19,9 +24,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     // Shopping
-    Route::get('/shopping/all', [ShoppingItemController::class, 'all'])->name('shopping.all');
     Route::get('/shopping/mylist', [ShoppingItemController::class, 'myList'])->name('shopping.mylist');
-    Route::get('/shopping/{shoppingItem}', [ShoppingItemController::class, 'view'])->name('shopping.view');
     Route::get('/shopping/create', [ShoppingItemController::class, 'create'])->name('shopping.create');
     Route::get('/shopping/edit/{shoppingItem}', [ShoppingItemController::class, 'edit'])->name('shopping.edit');
     Route::post('/shopping', [ShoppingItemController::class, 'store'])->name('shopping.store');
@@ -29,6 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/shopping/{shoppingItem}', [ShoppingItemController::class, 'delete'])->name('shopping.delete');
     Route::post('/shopping/image/{shoppingItem}', [ShoppingItemController::class, 'storeImage'])->name('shopping.image.store');
     Route::delete('/shopping/image/{shoppingImage}', [ShoppingItemController::class, 'deleteImage'])->name('shopping.image.delete');
+
+    // Shopping ticket
+    Route::post('/ticket/buy/{shoppingItem}', [ShoppingTicketController::class, 'buyTicket'])->name('ticket.buy');
 
     // Game play
     Route::get('/play/game/{game}', [GameController::class, 'play'])->name('public.play.game');

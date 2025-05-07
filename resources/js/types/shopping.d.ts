@@ -11,6 +11,7 @@ export interface ShoppingItem {
     item_price: number;
     draw_date: Date;
     is_active: boolean;
+    shopping_images?: [ShoppingImageProps]
 }
 export type ShoppingItemProps = ShoppingItem;
 

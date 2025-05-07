@@ -8,6 +8,7 @@ export default function All({auth, shoppingItems}:{
     auth: AuthProps,
     shoppingItems: [ShoppingItemProps]
 }) {
+
     return (
         <ShoppingLayout
             header={

@@ -2,9 +2,10 @@ import { ShoppingImageProps } from "@/types/shopping";
 import { useForm } from "@inertiajs/react";
 import { Button, Carousel, IconButton } from "@material-tailwind/react"
 
-export default function ShoppingImageDisplay({shoppingImages, isOwner}:{
+export default function ShoppingImageDisplay({shoppingImages, isOwner, className}:{
     shoppingImages?: [ShoppingImageProps],
     isOwner: Boolean | false;
+    className?: string
 }) {
 
     const { data, setData, delete: destroy, post, processing, recentlySuccessful } = useForm({
@@ -93,7 +94,7 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner}:{
                 <img
                     src={'/storage/assets/images/shopping/' + i.name}
                     alt={"image " + index}
-                    className="inline max-h-96 object-center"
+                    className={"inline max-h-96 object-center " + className}
                 />
                 {isOwner && (
                   <div className="absolute inset-0 grid h-full w-full">

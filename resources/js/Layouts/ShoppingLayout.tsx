@@ -1,8 +1,8 @@
 import { AuthProps, GameProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import AuthenticatedShoppingLayout from "./AuthenticatedShoppingLayout";
-import PublicLayout from "./PublicLayout";
+import ShoppingAuthenticatedLayout from "./ShoppingAuthenticatedLayout";
 import { PropsWithChildren, ReactNode } from "react";
+import ShoppingPublicLayout from "./ShoppingPublicLayout";
 
 export default function GameLayout({
     auth, 
@@ -12,21 +12,21 @@ export default function GameLayout({
     return (
         <>
         {auth?.user? (
-            <AuthenticatedShoppingLayout
+            <ShoppingAuthenticatedLayout
                 header={header}
             >
             
                 <Head title="Shopping items" />
                 <>{children}</>
-            </AuthenticatedShoppingLayout>
+            </ShoppingAuthenticatedLayout>
         ):(
-            <PublicLayout
+            <ShoppingPublicLayout
                 header={header}
             >
             
                 <Head title="Welcome" />
                 <>{children}</>
-            </PublicLayout>
+            </ShoppingPublicLayout>
         )}
         </>
     );

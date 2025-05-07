@@ -21,7 +21,7 @@ class ShoppingItemController extends Controller
 
     public function all(): Response
     {
-        $shoppingItems = ShoppingItem::where('is_active', 1)->get();
+        $shoppingItems = ShoppingItem::where('is_active', 1)->with(['shoppingImages'])->get();
         return Inertia::render('Shopping/All', [
             'shoppingItems' => $shoppingItems,
         ]);
