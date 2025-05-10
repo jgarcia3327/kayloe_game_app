@@ -63,6 +63,7 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
             <ShoppingImageUpload
                 shoppingItemId={shoppingItem.id}
                 shoppingImages={shoppingImages}
+                className="max-h-96"
             />
 
             <form onSubmit={submit} className="mt-6 space-y-6">
