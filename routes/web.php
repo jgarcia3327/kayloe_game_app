@@ -14,8 +14,8 @@ Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/games', [GameController::class, 'index'])->name('games.index');
 
 Route::get('/shopping', [ShoppingItemController::class, 'index'])->name('shopping.index');
-Route::get('/shopping/all', [ShoppingItemController::class, 'all'])->name('shopping.all');
-Route::get('/shopping/{shoppingItem}', [ShoppingItemController::class, 'view'])->name('shopping.view');
+Route::get('/shopping/item/all', [ShoppingItemController::class, 'all'])->name('shopping.all');
+Route::get('/shopping/item/{shoppingItem}', [ShoppingItemController::class, 'view'])->name('shopping.view');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     // Shopping
     Route::get('/shopping/mylist', [ShoppingItemController::class, 'myList'])->name('shopping.mylist');
     Route::get('/shopping/create', [ShoppingItemController::class, 'create'])->name('shopping.create');
-    Route::get('/shopping/edit/{shoppingItem}', [ShoppingItemController::class, 'edit'])->name('shopping.edit');
+    Route::get('/shopping/{shoppingItem}/edit', [ShoppingItemController::class, 'edit'])->name('shopping.edit');
     Route::post('/shopping', [ShoppingItemController::class, 'store'])->name('shopping.store');
     Route::patch('/shopping/{shoppingItem}', [ShoppingItemController::class, 'update'])->name('shopping.update');
     Route::delete('/shopping/{shoppingItem}', [ShoppingItemController::class, 'delete'])->name('shopping.delete');

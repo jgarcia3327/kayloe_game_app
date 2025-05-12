@@ -9,7 +9,7 @@ export default function ShoppingOption({auth, shoppingItem, hasViewBtn}:{
     hasViewBtn?: boolean | false
 }) {
 
-    const { get, post, processing, recentlySuccessful } = useForm({
+    const { get, post, processing } = useForm({
             //
         });
 
@@ -27,7 +27,7 @@ export default function ShoppingOption({auth, shoppingItem, hasViewBtn}:{
                 </PrimaryButton>
             ) : (
                 <PrimaryButton 
-                    className="cursor-pointer col-span-1 text-center bg-gray-300 rounded-md text-white" 
+                    className="cursor-pointer col-span-1 text-center bg-gray-900 rounded-md" 
                     disabled={true}
                 >
                     Sold out

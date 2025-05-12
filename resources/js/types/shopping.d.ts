@@ -10,6 +10,8 @@ export interface ShoppingItem {
     ticket_price: number;
     item_price: number;
     draw_date: Date;
+    expire_date: Date;
+    draw_option: number;
     is_active: boolean;
     shopping_images?: [ShoppingImageProps];
     shopping_tickets?: [ShoppingTicketProps];

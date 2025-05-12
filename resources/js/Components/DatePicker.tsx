@@ -23,8 +23,9 @@ export default function DatePicker({id, label, value} : {
           <PopoverHandler>
             <Input
                 id={id}
+                className="border-1 border-gray-400 border-t-gray-400"
                 name={id}
-                label={label? label : "Select a Date"}
+                label={label && label}
                 onChange={() => null}
                 value={date ? format(date, "PPP") : value ? format(value, "PPP") : ""}
             />

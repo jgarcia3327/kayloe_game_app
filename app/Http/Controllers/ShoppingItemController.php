@@ -62,7 +62,7 @@ class ShoppingItemController extends Controller
             'is_deleted' => false
         ]);
         
-        return $this->edit($shoppingItem);
+        return redirect()->route('shopping.edit', $shoppingItem->id);
     }
 
     public function edit(ShoppingItem $shoppingItem): Response
@@ -84,6 +84,8 @@ class ShoppingItemController extends Controller
                 'ticket_price' => $request->ticket_price,
                 'item_price' => $request->item_price,
                 'draw_date' => $request->draw_date,
+                'expire_date' => $request->expire_date,
+                'draw_option' => $request->draw_option,
                 'is_active' => $request->is_active
             ]);
         }

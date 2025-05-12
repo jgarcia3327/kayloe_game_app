@@ -7,15 +7,18 @@ import { AuthProps } from '@/types';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import ShoppingImageUpload from './ShoppingImageUpload';
-import { ShoppingImageProps, ShoppingItemProps } from '@/types/shopping';
+import { ShoppingItemProps } from '@/types/shopping';
 import DatePicker from '@/Components/DatePicker';
-import { format, parse } from "date-fns";
+import { parse } from "date-fns";
 
 export default function UpdateShoppingForm({ auth, shoppingItem, className = '' }:{
     auth: AuthProps,
     shoppingItem: ShoppingItemProps,
     className?: string,
 }) {
+
+    const today = new Date();
+    const after7days = today.setDate(today.getDate() + 7);
 
     const { data, setData, patch, delete: destroy, transform, processing, recentlySuccessful } = useForm({
         title: shoppingItem.title,
@@ -24,6 +27,8 @@ export default function UpdateShoppingForm({ auth, shoppingItem, className = '' 
         ticket_price: shoppingItem.ticket_price,
         item_price: shoppingItem.item_price,
         draw_date: shoppingItem.draw_date,
+        expire_date: shoppingItem.expire_date,
+        draw_option: shoppingItem.draw_option,
         is_active: shoppingItem.is_active
     });
 
@@ -38,7 +43,8 @@ export default function UpdateShoppingForm({ auth, shoppingItem, className = '' 
         // data.draw_date = parse(objEntries.draw_date, "PPP", new Date()).toISOString().slice(0, 19).replace('T', ' ');
         transform((data) => ({
         ...data,
-        draw_date: parse(objEntries.draw_date, "PPP", new Date()).toISOString().slice(0, 19).replace('T', ' ')
+        draw_date: parse(objEntries.draw_date, "PPP", after7days).toISOString().slice(0, 19).replace('T', ' '),
+        expire_date: parse(objEntries.expire_date, "PPP", after7days).toISOString().slice(0, 19).replace('T', ' '),
         }))
         patch(route('shopping.update', shoppingItem.id), {
             preserveScroll: true
@@ -119,7 +125,32 @@ export default function UpdateShoppingForm({ auth, shoppingItem, className = '' 
                 <div>
                     <InputLabel htmlFor="draw_date" value="Draw date" />
 
-                    <DatePicker id="draw_date" value={data.draw_date? data.draw_date : new Date()}></DatePicker>
+                    <DatePicker 
+                        id="draw_date" 
+                        value={data.draw_date? data.draw_date : after7days}
+                    />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="expire_date" value="Expire date" />
+
+                    <DatePicker 
+                        id="expire_date" 
+                        value={data.expire_date? data.expire_date : after7days}
+                    />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="draw_option" value="Draw Option" className="inline pr-2"/>
+
+                    <select 
+                        value={data.draw_option} 
+                        id="draw_option"
+                        onChange={(e) => setData('draw_option', parseInt(e.target.value))}
+                    >
+                        <option value="0">Draw on once all ticket sold.</option>
+                        <option value="1">Draw on draw date.</option>
+                    </select>
                 </div>
 
                 <div>

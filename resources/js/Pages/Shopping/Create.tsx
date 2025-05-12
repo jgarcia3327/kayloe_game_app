@@ -1,13 +1,13 @@
 import { Head } from "@inertiajs/react";
 import CreateShoppingForm from "./Partials/CreateShoppingForm";
 import { AuthProps } from "@/types";
-import GameLayout from "@/Layouts/GameLayout";
+import ShoppingLayout from "@/Layouts/ShoppingLayout";
 
 export default function Create({auth}:{
     auth:AuthProps;
 }) {
     return (
-        <GameLayout
+        <ShoppingLayout
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create Game</h2>}
             auth={auth}
         >
@@ -22,6 +22,6 @@ export default function Create({auth}:{
                     </div>
                 </div>
             </div>
-        </GameLayout>
+        </ShoppingLayout>
     );
 }
