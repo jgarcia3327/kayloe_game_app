@@ -11,14 +11,13 @@ import { ShoppingImageProps, ShoppingItemProps } from '@/types/shopping';
 import DatePicker from '@/Components/DatePicker';
 import { format, parse } from "date-fns";
 
-export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages, className = '' }:{
+export default function UpdateShoppingForm({ auth, shoppingItem, className = '' }:{
     auth: AuthProps,
     shoppingItem: ShoppingItemProps,
-    shoppingImages?: [ShoppingImageProps],
     className?: string,
 }) {
 
-    const { data, setData, patch, delete: destroy, processing, recentlySuccessful } = useForm({
+    const { data, setData, patch, delete: destroy, transform, processing, recentlySuccessful } = useForm({
         title: shoppingItem.title,
         description: shoppingItem.description,
         ticket_count: shoppingItem.ticket_count,
@@ -36,7 +35,11 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
         // console.log(objEntries);
         // console.log(objEntries.draw_date);
         // console.log(parse(objEntries.draw_date, "PPP", new Date()));
-        data.draw_date = parse(objEntries.draw_date, "PPP", new Date()).toISOString().slice(0, 19).replace('T', ' ');
+        // data.draw_date = parse(objEntries.draw_date, "PPP", new Date()).toISOString().slice(0, 19).replace('T', ' ');
+        transform((data) => ({
+        ...data,
+        draw_date: parse(objEntries.draw_date, "PPP", new Date()).toISOString().slice(0, 19).replace('T', ' ')
+        }))
         patch(route('shopping.update', shoppingItem.id), {
             preserveScroll: true
         });
@@ -62,7 +65,7 @@ export default function UpdateShoppingForm({ auth, shoppingItem, shoppingImages,
 
             <ShoppingImageUpload
                 shoppingItemId={shoppingItem.id}
-                shoppingImages={shoppingImages}
+                shoppingImages={shoppingItem.shopping_images}
                 className="max-h-96"
             />
 

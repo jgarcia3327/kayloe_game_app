@@ -23,7 +23,6 @@ export default function Edit({ auth, shoppingItem, shoppingImages }:{
                         <UpdateShoppingForm
                             auth={auth}
                             shoppingItem={shoppingItem}
-                            shoppingImages={shoppingImages}
                         />
                     </div>
                 </div>

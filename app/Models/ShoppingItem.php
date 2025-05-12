@@ -19,4 +19,9 @@ class ShoppingItem extends Model
     {
         return $this->hasMany(ShoppingImage::class);
     }
+
+    public function shoppingTickets(): HasMany
+    {
+        return $this->hasMany(ShoppingTicket::class);
+    }
 }

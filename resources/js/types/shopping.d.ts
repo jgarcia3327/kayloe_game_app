@@ -11,11 +11,16 @@ export interface ShoppingItem {
     item_price: number;
     draw_date: Date;
     is_active: boolean;
-    shopping_images?: [ShoppingImageProps]
+    shopping_images?: [ShoppingImageProps];
+    shopping_tickets?: [ShoppingTicketProps];
 }
 export type ShoppingItemProps = ShoppingItem;
 
 export type ShoppingImageProps = {
     id: number;
     name: string;
+}
+
+export type ShoppingTicketProps = {
+    uuid: string;
 }

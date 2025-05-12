@@ -1,22 +1,15 @@
 import ShoppingLayout from "@/Layouts/ShoppingLayout";
 import { AuthProps } from "@/types";
-import { ShoppingImageProps, ShoppingItemProps } from "@/types/shopping";
+import { ShoppingItemProps } from "@/types/shopping";
 import ShoppingImageDisplay from "./Partials/ShoppingImageDisplay";
-import { useForm } from "@inertiajs/react";
+import ShoppingOption from "./Partials/ShoppingOption";
 
-export default function View({auth, shoppingItem, shoppingImages}:{
+export default function View({auth, shoppingItem}:{
     auth: AuthProps,
-    shoppingItem: ShoppingItemProps,
-    shoppingImages?: ShoppingImageProps
+    shoppingItem: ShoppingItemProps
 }) {
 
-    const { post, processing, recentlySuccessful } = useForm({
-                //
-    });
-
-    const ticketBuyHandler = (shoppingItemId:number) => {
-        post(route("ticket.buy", shoppingItemId));
-    }
+    const availableTicket = shoppingItem.ticket_count - (shoppingItem.shopping_tickets? shoppingItem.shopping_tickets.length : 0);
 
     return (
         <ShoppingLayout
@@ -31,35 +24,21 @@ export default function View({auth, shoppingItem, shoppingImages}:{
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div>
                         <ShoppingImageDisplay 
-                            shoppingImages={shoppingImages}
+                            shoppingImages={shoppingItem.shopping_images}
                             className="max-h-[420px]"
+                            isOwner={false}
                         />
                     </div>
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <p className="text-xl">{shoppingItem.description}</p>
                         <p className="mt-4">Ticket Price: {shoppingItem.ticket_price}</p>
                         <p className="mt-4">Ticket count: {shoppingItem.ticket_count}</p>
-                        <p className="mt-4">
-                            Ticket available: TODO
-                        </p>
-                        <div className="grid grid-cols-4 w-full pt-8 gap-3">
-                            <a 
-                                className="cursor-pointer col-span-1 text-center bg-gray-600 rounded-md" 
-                                onClick={() => ticketBuyHandler(shoppingItem.id)}
-                            >
-                                Buy ticket
-                            </a>
-                            {(auth?.user && shoppingItem.user_id === auth.user.id) && 
-                                <>
-                                    <a 
-                                        className="col-span-1 col-end-5 text-center bg-green-300 rounded-md" 
-                                        href={route('shopping.edit', shoppingItem.id)}
-                                    >
-                                        Edit
-                                    </a>
-                                </>
-                            }
-                        </div>
+                        <p className="mt-4"> Ticket available: {availableTicket} </p>
+                        <p className="mt-4"> Sold ticket: {shoppingItem.shopping_tickets?.length} </p>
+                        <ShoppingOption
+                            auth={auth}
+                            shoppingItem={shoppingItem}
+                        />
                     </div>
                 </div>
             </div>
