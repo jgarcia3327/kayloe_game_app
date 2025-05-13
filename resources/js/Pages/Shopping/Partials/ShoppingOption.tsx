@@ -20,7 +20,7 @@ export default function ShoppingOption({auth, shoppingItem, hasViewBtn}:{
             {availableTicket > 0? (
                 <PrimaryButton 
                     className="cursor-pointer col-span-1 text-center bg-gray-600 rounded-md text-white" 
-                    onClick={() => post(route("ticket.buy", shoppingItem.id))}
+                    onClick={() => post(route("ticket.buy", shoppingItem.id), {preserveScroll: true})}
                     disabled={processing}
                 >
                     Buy ticket

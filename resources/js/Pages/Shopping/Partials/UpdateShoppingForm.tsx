@@ -123,6 +123,18 @@ export default function UpdateShoppingForm({ auth, shoppingItem, className = '' 
                 </div>
 
                 <div>
+                    <InputLabel htmlFor="ticket_price" value="Ticket price" />
+
+                    <TextInput
+                        type="number"
+                        id="ticket_price"
+                        className="mt-1 block w-full"
+                        value={data.ticket_price}
+                        onChange={(e) => setData('ticket_price', parseFloat(e.target.value))}
+                    />
+                </div>
+
+                <div>
                     <InputLabel htmlFor="draw_date" value="Draw date" />
 
                     <DatePicker 
@@ -160,18 +172,6 @@ export default function UpdateShoppingForm({ auth, shoppingItem, className = '' 
                         id="is_active"
                         {...(data.is_active && {checked:true})}
                         onChange={(e) => {setData('is_active', e.target.checked)}}
-                    />
-                </div>
-
-                <div>
-                    <InputLabel htmlFor="ticket_price" value="Ticket price" />
-
-                    <TextInput
-                        type="number"
-                        id="ticket_price"
-                        className="mt-1 block w-full"
-                        value={data.ticket_price}
-                        onChange={(e) => setData('ticket_price', parseFloat(e.target.value))}
                     />
                 </div>
 

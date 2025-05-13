@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShoppingDraw;
 use App\Models\ShoppingItem;
 use App\Models\ShoppingTicket;
 use Illuminate\Support\Facades\Auth;
@@ -24,5 +25,23 @@ class ShoppingTicketController extends Controller
                 'is_active' => true
             ]);
         }
+
+        // Draw
+        if($shoppingItem->draw_option === 0 && $shoppingItem->ticket_count === ShoppingTicket::where('shopping_item_id', $shoppingItem->id)->count()) {
+            $this->startDraw($shoppingItem);
+        }
+    }
+
+    public function startDraw($shoppingItem) {
+
+        $winningTicket = ShoppingTicket::select('id')->where('shopping_item_id', $shoppingItem->id)->inRandomOrder()->first();
+
+        ShoppingDraw::create([
+            'shopping_item_id' => $shoppingItem->id,
+            'shopping_ticket_id' => $winningTicket->id,
+            'is_active' => true
+        ]);
+
+        // TODO redirect to draw ticket
     }
 }
