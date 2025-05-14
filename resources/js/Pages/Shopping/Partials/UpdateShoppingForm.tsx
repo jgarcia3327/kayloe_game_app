@@ -70,8 +70,7 @@ export default function UpdateShoppingForm({ auth, shoppingItem, className = '' 
             </header>
 
             <ShoppingImageUpload
-                shoppingItemId={shoppingItem.id}
-                shoppingImages={shoppingItem.shopping_images}
+                shoppingItem={shoppingItem}
                 className="max-h-96"
             />
 

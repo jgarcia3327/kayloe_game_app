@@ -1,9 +1,10 @@
-import { ShoppingImageProps } from "@/types/shopping";
+import { ShoppingImageProps, ShoppingItemProps } from "@/types/shopping";
 import { ImageDeleteModal } from "./ImageDeleteModal";
 import { Carousel, IconButton } from "@material-tailwind/react";
+import { ImageModal } from "./ImageModal";
 
-export default function ShoppingImageDisplay({shoppingImages, isOwner, className}:{
-    shoppingImages?: [ShoppingImageProps],
+export default function ShoppingImageDisplay({shoppingItem, isOwner, className}:{
+    shoppingItem: ShoppingItemProps;
     isOwner: Boolean | false;
     className?: string
 }) {
@@ -17,7 +18,7 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner, className
                 {new Array(length).fill("").map((_, i) => (
                   <span
                     key={i}
-                    className={`block h-2 cursor-pointer rounded-2xl transition-all content-[''] ${
+                    className={`shadow-md block h-2 cursor-pointer rounded-2xl transition-all content-[''] ${
                       activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
                     }`}
                     onClick={() => setActiveIndex(i)}
@@ -31,7 +32,7 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner, className
                 color="white"
                 size="lg"
                 onClick={handlePrev}
-                className="!absolute top-2/4 left-4 -translate-y-2/4"
+                className="!absolute top-2/4 left-4 -translate-y-2/4 shadow-md"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +56,7 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner, className
                 color="white"
                 size="lg"
                 onClick={handleNext}
-                className="!absolute top-2/4 !right-4 -translate-y-2/4"
+                className="!absolute top-2/4 !right-4 -translate-y-2/4 shadow-md"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -74,15 +75,20 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner, className
               </IconButton>
             )}
         >
-            {shoppingImages && shoppingImages.map((image:ShoppingImageProps, index) => 
+            {shoppingItem.shopping_images?.map((image:ShoppingImageProps) => 
               <div 
                 key={image.id}
                 className="relative h-full w-full text-center object-center bg-gray-600 place-items-center"
               >
-                <img
+                {/* <img
                     src={'/storage/assets/images/shopping/' + image.name}
                     alt={"image " + index}
                     className={"inline object-center " + className}
+                /> */}
+                <ImageModal 
+                  shoppingItem={shoppingItem}
+                  image={image}
+                  className={className}               
                 />
                 {isOwner && (
                   <div className="absolute inset-0 grid h-full w-full">

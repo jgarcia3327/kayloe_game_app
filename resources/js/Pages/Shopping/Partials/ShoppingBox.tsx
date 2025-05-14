@@ -21,7 +21,7 @@ export default function ShoppingBox({ auth, shoppingItems }:{
                         <div className="pt-3 sm:pt-5 w-full">
                             <ShoppingImageDisplay 
                                 className="max-h-[240px]"
-                                shoppingImages={shoppingItem.shopping_images}                            
+                                shoppingItem={shoppingItem}                            
                             />
                             <h2 className="text-xl font-semibold text-black dark:text-white">
                                 {shoppingItem.title}

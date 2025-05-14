@@ -9,7 +9,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', [MainController::class, 'home'])->name('home');
+// Route::get('/', [MainController::class, 'home'])->name('home');
+Route::get('/', [ShoppingItemController::class, 'index'])->name('home');
 
 Route::get('/games', [GameController::class, 'index'])->name('games.index');
 

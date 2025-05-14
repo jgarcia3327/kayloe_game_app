@@ -29,7 +29,7 @@ class ShoppingItemController extends Controller
 
     public function myList(): Response
     {
-        $shoppingItems = ShoppingItem::where('user_id', Auth::user()->id)->get();
+        $shoppingItems = ShoppingItem::where('user_id', Auth::user()->id)->with(['shoppingImages', 'shoppingTickets', 'shoppingDraws'])->get();
         return Inertia::render('Shopping/MyList', [
             'shoppingItems' => $shoppingItems,
         ]);

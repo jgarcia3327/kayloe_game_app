@@ -24,7 +24,7 @@ export default function View({auth, shoppingItem}:{
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div>
                         <ShoppingImageDisplay 
-                            shoppingImages={shoppingItem.shopping_images}
+                            shoppingItem={shoppingItem}
                             className="max-h-[420px]"
                             isOwner={false}
                         />

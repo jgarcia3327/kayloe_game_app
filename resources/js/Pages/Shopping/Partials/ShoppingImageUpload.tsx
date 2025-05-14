@@ -3,11 +3,10 @@ import InputLabel from "../../../Components/InputLabel";
 import { Transition } from "@headlessui/react";
 import PrimaryButton from "../../../Components/PrimaryButton";
 import ShoppingImageDisplay from "./ShoppingImageDisplay";
-import { ShoppingImageProps, ShoppingItemProps } from "@/types/shopping";
+import { ShoppingItemProps } from "@/types/shopping";
 
-export default function ShoppingImageUpload({shoppingItemId, shoppingImages, className=''}:{
-    shoppingItemId: number,
-    shoppingImages?: [ShoppingImageProps],
+export default function ShoppingImageUpload({shoppingItem, className=''}:{
+    shoppingItem: ShoppingItemProps
     className?: string
 }){
 
@@ -17,7 +16,7 @@ export default function ShoppingImageUpload({shoppingItemId, shoppingImages, cla
 
     const handleUpload = (e:any) => {
         e.preventDefault();
-        post(route('shopping.image.store', shoppingItemId));
+        post(route('shopping.image.store', shoppingItem.id));
         data.image = undefined;
     };
 
@@ -26,7 +25,7 @@ export default function ShoppingImageUpload({shoppingItemId, shoppingImages, cla
     return (
         <>
             <div>
-                <ShoppingImageDisplay shoppingImages={shoppingImages} isOwner={true}/>
+                <ShoppingImageDisplay shoppingItem={shoppingItem} isOwner={true}/>
             </div>
             <form onSubmit={handleUpload} className={"mt-6 space-y-6 " + className} encType="multipart/form-data">
                 <div>

@@ -26,15 +26,15 @@ export function WinnerModal({shoppingItem, btnText}:{
       <Dialog open={open} handler={handleOpen}>
         <DialogHeader className="text-green-900">Winning ticket</DialogHeader>
         <DialogBody>
+          <ul>
           {shoppingItem.shopping_draws?.map((shoppingDraw: ShoppingDrawProps) => 
-            <ul>
-              <li key={shoppingDraw.id}>
-                <h3 className="text-3xl bold text-center tracking-wider">
-                  {winningTicket(shoppingDraw.shopping_ticket_id)?.uuid}
-                </h3>
-              </li>
-            </ul>
+            <li key={shoppingDraw.id}>
+              <h3 className="text-3xl bold text-center tracking-wider">
+                {winningTicket(shoppingDraw.shopping_ticket_id)?.uuid}
+              </h3>
+            </li>
           )}
+          </ul>
         </DialogBody>
         <DialogFooter>
           <Button variant="gradient" color="gray" onClick={handleOpen}>

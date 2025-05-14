@@ -29,12 +29,10 @@ export default function ShoppingOption({auth, shoppingItem, hasViewBtn}:{
             )}
 
             {availableTicket <= 0 && shoppingItem.shopping_draws && shoppingItem.shopping_draws.length > 0?
-                <>
                 <WinnerModal
                     shoppingItem={shoppingItem}
                     btnText={hasViewBtn? "Winner" : "View winner"}
                 />
-                </>
             :
                 <PrimaryButton 
                     className="cursor-pointer col-span-1 text-center bg-gray-900 rounded-md grid" 
