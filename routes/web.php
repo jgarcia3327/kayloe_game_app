@@ -16,6 +16,7 @@ Route::get('/games', [GameController::class, 'index'])->name('games.index');
 Route::get('/shopping', [ShoppingItemController::class, 'index'])->name('shopping.index');
 Route::get('/shopping/item/all', [ShoppingItemController::class, 'all'])->name('shopping.all');
 Route::get('/shopping/item/{shoppingItem}', [ShoppingItemController::class, 'view'])->name('shopping.view');
+Route::get('/shopping/item/{shoppingItem}/tickets', [ShoppingTicketController::class, 'itemTickets'])->name('shopping.item.tickets');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

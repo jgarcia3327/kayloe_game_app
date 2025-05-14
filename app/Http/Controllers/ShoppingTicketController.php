@@ -44,4 +44,8 @@ class ShoppingTicketController extends Controller
 
         // TODO redirect to draw ticket
     }
+
+    public function itemTickets($shoppingItem) {
+        return ShoppingTicket::where('shopping_item_id', $shoppingItem->id)->get();
+    }
 }

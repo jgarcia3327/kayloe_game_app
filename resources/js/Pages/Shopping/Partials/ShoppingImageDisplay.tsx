@@ -1,24 +1,12 @@
 import { ShoppingImageProps } from "@/types/shopping";
-import { useForm } from "@inertiajs/react";
-import { Button, Carousel, IconButton } from "@material-tailwind/react"
+import { ImageDeleteModal } from "./ImageDeleteModal";
+import { Carousel, IconButton } from "@material-tailwind/react";
 
 export default function ShoppingImageDisplay({shoppingImages, isOwner, className}:{
     shoppingImages?: [ShoppingImageProps],
     isOwner: Boolean | false;
     className?: string
 }) {
-
-    const { data, setData, delete: destroy, post, processing, recentlySuccessful } = useForm({
-            // 
-        });
-
-    const handleDelete = (e:any, imageId:number) => {
-        e.preventDefault();
-        let c = confirm("Confirm image delete:\n");
-        if (c === true) {
-            destroy(route('shopping.image.delete', imageId));
-        }
-    }
 
     return (
         <Carousel 
@@ -86,13 +74,13 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner, className
               </IconButton>
             )}
         >
-            {shoppingImages && shoppingImages.map((i:ShoppingImageProps, index) => 
+            {shoppingImages && shoppingImages.map((image:ShoppingImageProps, index) => 
               <div 
-                key={i.id}
+                key={image.id}
                 className="relative h-full w-full text-center object-center bg-gray-600 place-items-center"
               >
                 <img
-                    src={'/storage/assets/images/shopping/' + i.name}
+                    src={'/storage/assets/images/shopping/' + image.name}
                     alt={"image " + index}
                     className={"inline object-center " + className}
                 />
@@ -100,12 +88,9 @@ export default function ShoppingImageDisplay({shoppingImages, isOwner, className
                   <div className="absolute inset-0 grid h-full w-full">
                     <div className="w-3/4">
                       <div className="mt-3 ml-3 flex gap-2">
-                        <Button 
-                          className="lg bg-opacity-30 bg-red-600"
-                          onClick={(e) => handleDelete(e, i.id)}
-                        >
-                          Delete
-                        </Button>
+                        <ImageDeleteModal
+                          image={image}
+                        />
                       </div>
                     </div>
                   </div>

@@ -21,7 +21,7 @@ class ShoppingItemController extends Controller
 
     public function all(): Response
     {
-        $shoppingItems = ShoppingItem::where('is_active', 1)->with(['shoppingImages', 'shoppingTickets'])->get();
+        $shoppingItems = ShoppingItem::where('is_active', 1)->with(['shoppingImages', 'shoppingTickets', 'shoppingDraws'])->get();
         return Inertia::render('Shopping/All', [
             'shoppingItems' => $shoppingItems,
         ]);
@@ -136,8 +136,8 @@ class ShoppingItemController extends Controller
 
     private function getShoppingItemWithImages($shoppingItemId, $isOwner) {
         if ($isOwner)
-            return ShoppingItem::where('user_id', Auth::user()->id)->where('id', $shoppingItemId)->with(['shoppingImages', 'shoppingTickets'])->first();
+            return ShoppingItem::where('user_id', Auth::user()->id)->where('id', $shoppingItemId)->with(['shoppingImages', 'shoppingTickets', 'shoppingDraws'])->first();
         else
-            return ShoppingItem::where('is_active', 1)->where('id', $shoppingItemId)->with(['shoppingImages', 'shoppingTickets'])->first();
+            return ShoppingItem::where('is_active', 1)->where('id', $shoppingItemId)->with(['shoppingImages', 'shoppingTickets', 'shoppingDraws'])->first();
     }
 }

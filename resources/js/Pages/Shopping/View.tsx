@@ -33,8 +33,8 @@ export default function View({auth, shoppingItem}:{
                         <p className="text-xl">{shoppingItem.description}</p>
                         <p className="mt-4">Ticket Price: {shoppingItem.ticket_price}</p>
                         <p className="mt-4">Ticket count: {shoppingItem.ticket_count}</p>
-                        <p className="mt-4"> Ticket available: {availableTicket} </p>
-                        <p className="mt-4"> Sold ticket: {shoppingItem.shopping_tickets?.length} </p>
+                        <p className="mt-4">Ticket available: {availableTicket} </p>
+                        <p className="mt-4">Sold ticket: {shoppingItem.shopping_tickets?.length} </p>
                         <ShoppingOption
                             auth={auth}
                             shoppingItem={shoppingItem}

@@ -15,6 +15,7 @@ export interface ShoppingItem {
     is_active: boolean;
     shopping_images?: [ShoppingImageProps];
     shopping_tickets?: [ShoppingTicketProps];
+    shopping_draws?: [ShoppingDrawProps];
 }
 export type ShoppingItemProps = ShoppingItem;
 
@@ -24,5 +25,11 @@ export type ShoppingImageProps = {
 }
 
 export type ShoppingTicketProps = {
+    id: number;
     uuid: string;
+}
+
+export type ShoppingDrawProps = {
+    id: number;
+    shopping_ticket_id: number;
 }
