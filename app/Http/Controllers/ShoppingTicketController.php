@@ -14,21 +14,24 @@ class ShoppingTicketController extends Controller
 {
     public function buyTicket(ShoppingItem $shoppingItem): void
     {
-        // Check if we have available ticket from the shopping item
-        $ticketCount = ShoppingTicket::where('shopping_item_id', $shoppingItem->id)->count();
-        if ($shoppingItem->ticket_count > $ticketCount) {
-            // Add ticket
-            ShoppingTicket::create([
-                'uuid' => Str::uuid()->toString(),
-                'shopping_item_id' => $shoppingItem->id,
-                'user_id' => Auth::user()->id,
-                'is_active' => true
-            ]);
-        }
+        // Check if shopping item is active
+        if ($shoppingItem->is_active) {
+            // Check if we have available ticket from the shopping item
+            $ticketCount = ShoppingTicket::where('shopping_item_id', $shoppingItem->id)->count();
+            if ($shoppingItem->ticket_count > $ticketCount) {
+                // Add ticket
+                ShoppingTicket::create([
+                    'uuid' => Str::uuid()->toString(),
+                    'shopping_item_id' => $shoppingItem->id,
+                    'user_id' => Auth::user()->id,
+                    'is_active' => true
+                ]);
+            }
 
-        // Draw
-        if($shoppingItem->draw_option === 0 && $shoppingItem->ticket_count === ShoppingTicket::where('shopping_item_id', $shoppingItem->id)->count()) {
-            $this->startDraw($shoppingItem);
+            // Draw
+            if($shoppingItem->draw_option === 0 && $shoppingItem->ticket_count === ShoppingTicket::where('shopping_item_id', $shoppingItem->id)->count()) {
+                $this->startDraw($shoppingItem);
+            }
         }
     }
 

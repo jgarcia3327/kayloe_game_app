@@ -37,8 +37,14 @@ class ShoppingItemController extends Controller
 
     public function view(ShoppingItem $shoppingItem): Response
     {
+        // dd($shoppingItem);
+        // dd($this->getShoppingItemWithImages($shoppingItem->id, false));
+        if ($shoppingItem->user_id === Auth::user()->id)
+            $shoppingItemView = $this->getShoppingItemWithImages($shoppingItem->id, true);
+        else 
+            $shoppingItemView = $this->getShoppingItemWithImages($shoppingItem->id, false);
         return Inertia::render('Shopping/View', [
-            'shoppingItem' => $this->getShoppingItemWithImages($shoppingItem->id, false)
+            'shoppingItem' => $shoppingItemView
         ]);
     }
 
@@ -75,7 +81,6 @@ class ShoppingItemController extends Controller
 
     public function update(ShoppingItem $shoppingItem, Request $request): void
     {
-        // dd($request);
         if ($shoppingItem->user_id === Auth::user()->id) {
             $shoppingItem->update([
                 'title' => $request->title,

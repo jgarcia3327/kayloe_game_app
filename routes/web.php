@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameQuestionController;
 use App\Http\Controllers\ShoppingItemController;
