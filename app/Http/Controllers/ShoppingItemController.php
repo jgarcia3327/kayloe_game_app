@@ -37,8 +37,6 @@ class ShoppingItemController extends Controller
 
     public function view(ShoppingItem $shoppingItem): Response
     {
-        // dd($shoppingItem);
-        // dd($this->getShoppingItemWithImages($shoppingItem->id, false));
         if ($shoppingItem->user_id === Auth::user()->id)
             $shoppingItemView = $this->getShoppingItemWithImages($shoppingItem->id, true);
         else 

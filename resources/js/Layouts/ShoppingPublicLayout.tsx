@@ -29,7 +29,7 @@ export default function Authenticated({
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
                                     href={route('shopping.all')}
-                                    active={route().current('home')}
+                                    active={route().current('shopping.all')}
                                 >
                                     All shopping items
                                 </NavLink>
