@@ -3,6 +3,7 @@ import { AuthProps } from "@/types";
 import { ShoppingItemProps } from "@/types/shopping";
 import { useForm } from "@inertiajs/react";
 import { WinnerModal } from "./WinnerModal";
+import { BuyTicketModal } from "./BuyTicketModa";
 
 export default function ShoppingOption({auth, shoppingItem, hasViewBtn}:{
     auth: AuthProps,
@@ -26,13 +27,18 @@ export default function ShoppingOption({auth, shoppingItem, hasViewBtn}:{
             }
             
             {availableTicket > 0 ? 
-                <PrimaryButton 
-                    className="cursor-pointer col-span-1 text-center bg-gray-600 rounded-md text-white" 
-                    onClick={() => post(route("ticket.buy", shoppingItem.id), {preserveScroll: true})}
-                    disabled={processing}
-                >
-                    Buy ticket
-                </PrimaryButton>
+                // <PrimaryButton 
+                //     className="cursor-pointer col-span-1 text-center bg-gray-600 rounded-md text-white" 
+                //     onClick={() => post(route("ticket.buy", shoppingItem.id), {preserveScroll: true})}
+                //     disabled={processing}
+                // >
+                //     Buy ticket
+                // </PrimaryButton>
+                <BuyTicketModal
+                    shoppingItem={shoppingItem}
+                    className="from-gray-400 to-gray-900"
+                    btnText="Buy Ticket"
+                />
                 :
                 <PrimaryButton 
                     className="cursor-pointer col-span-1 text-center bg-gray-900 rounded-md grid" 

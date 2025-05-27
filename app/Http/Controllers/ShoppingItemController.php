@@ -37,7 +37,7 @@ class ShoppingItemController extends Controller
 
     public function view(ShoppingItem $shoppingItem): Response
     {
-        if ($shoppingItem->user_id === Auth::user()->id)
+        if ($this->isShoppingItemOwner($shoppingItem->user_id))
             $shoppingItemView = $this->getShoppingItemWithImages($shoppingItem->id, true);
         else 
             $shoppingItemView = $this->getShoppingItemWithImages($shoppingItem->id, false);
@@ -142,5 +142,11 @@ class ShoppingItemController extends Controller
             return ShoppingItem::where('user_id', Auth::user()->id)->where('id', $shoppingItemId)->with(['shoppingImages', 'shoppingTickets', 'shoppingDraws'])->first();
         else
             return ShoppingItem::where('is_active', 1)->where('id', $shoppingItemId)->with(['shoppingImages', 'shoppingTickets', 'shoppingDraws'])->first();
+    }
+
+    private function isShoppingItemOwner($shoppingItemUserId) {
+        if (Auth::check() && Auth::user()->id && $shoppingItemUserId)
+            return true;
+        return false;
     }
 }

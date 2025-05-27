@@ -7,8 +7,6 @@ use App\Models\ShoppingItem;
 use App\Models\ShoppingTicket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class ShoppingTicketController extends Controller
 {
@@ -16,8 +14,12 @@ class ShoppingTicketController extends Controller
     {
         // Check if shopping item is active
         if ($shoppingItem->is_active) {
+
+            // TODO Check user credits or successful transaction
+            
             // Check if we have available ticket from the shopping item
             $ticketCount = ShoppingTicket::where('shopping_item_id', $shoppingItem->id)->count();
+
             if ($shoppingItem->ticket_count > $ticketCount) {
                 // Add ticket
                 ShoppingTicket::create([
