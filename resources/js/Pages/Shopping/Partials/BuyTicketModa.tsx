@@ -15,7 +15,8 @@ export function BuyTicketModal({shoppingItem, btnText, className}:{
   btnText: string;
   className?: string;
 }) {
-  const [open, setOpen] = React.useS
+  const [open, setOpen] = React.useState(false);
+ 
   const handleOpen = () => setOpen(!open);
 
   const { post, processing } = useForm({
