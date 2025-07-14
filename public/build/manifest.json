@@ -1,0 +1,964 @@
+{
+  "_ApplicationLogo-yYwosbvq.js": {
+    "file": "assets/ApplicationLogo-yYwosbvq.js",
+    "name": "ApplicationLogo",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_Checkbox-B52UkFSC.js": {
+    "file": "assets/Checkbox-B52UkFSC.js",
+    "name": "Checkbox",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_GameAuthenticatedLayout-Dth-A3o3.js": {
+    "file": "assets/GameAuthenticatedLayout-Dth-A3o3.js",
+    "name": "GameAuthenticatedLayout",
+    "imports": [
+      "resources/js/app.tsx",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "_GameLayout-WRkvIvmF.js": {
+    "file": "assets/GameLayout-WRkvIvmF.js",
+    "name": "GameLayout",
+    "imports": [
+      "resources/js/app.tsx",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "_GuestLayout-DU5sODOT.js": {
+    "file": "assets/GuestLayout-DU5sODOT.js",
+    "name": "GuestLayout",
+    "imports": [
+      "resources/js/app.tsx",
+      "_ApplicationLogo-yYwosbvq.js"
+    ]
+  },
+  "_InputError-bJzekFUk.js": {
+    "file": "assets/InputError-bJzekFUk.js",
+    "name": "InputError",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_InputLabel-7SAgBUys.js": {
+    "file": "assets/InputLabel-7SAgBUys.js",
+    "name": "InputLabel",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_PrimaryButton-olGBlOKT.js": {
+    "file": "assets/PrimaryButton-olGBlOKT.js",
+    "name": "PrimaryButton",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_ResponsiveNavLink-sGAhQPL-.js": {
+    "file": "assets/ResponsiveNavLink-sGAhQPL-.js",
+    "name": "ResponsiveNavLink",
+    "imports": [
+      "resources/js/app.tsx",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "_ShoppingAuthenticatedLayout-xOj-k_Tw.js": {
+    "file": "assets/ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+    "name": "ShoppingAuthenticatedLayout",
+    "imports": [
+      "resources/js/app.tsx",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "_ShoppingImageDisplay-DvnTeReQ.js": {
+    "file": "assets/ShoppingImageDisplay-DvnTeReQ.js",
+    "name": "ShoppingImageDisplay",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-pdYXBasi.js"
+    ]
+  },
+  "_ShoppingLayout-WWZk-h40.js": {
+    "file": "assets/ShoppingLayout-WWZk-h40.js",
+    "name": "ShoppingLayout",
+    "imports": [
+      "resources/js/app.tsx",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "_TextAreaInput-CfRw9ztl.js": {
+    "file": "assets/TextAreaInput-CfRw9ztl.js",
+    "name": "TextAreaInput",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_TextInput-C74Pob2z.js": {
+    "file": "assets/TextInput-C74Pob2z.js",
+    "name": "TextInput",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_index-CoSthDYa.js": {
+    "file": "assets/index-CoSthDYa.js",
+    "name": "index",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_index-pdYXBasi.js": {
+    "file": "assets/index-pdYXBasi.js",
+    "name": "index",
+    "imports": [
+      "resources/js/app.tsx",
+      "_index-CoSthDYa.js"
+    ]
+  },
+  "_index.esm-CjPt-6xX.js": {
+    "file": "assets/index.esm-CjPt-6xX.js",
+    "name": "index.esm",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_transition-mkKO62-U.js": {
+    "file": "assets/transition-mkKO62-U.js",
+    "name": "transition",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.tsx": {
+    "file": "assets/ConfirmPassword-XBuc7f33.js",
+    "name": "ConfirmPassword",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_GuestLayout-DU5sODOT.js",
+      "_ApplicationLogo-yYwosbvq.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.tsx": {
+    "file": "assets/ForgotPassword-D5BWRpaF.js",
+    "name": "ForgotPassword",
+    "src": "resources/js/Pages/Auth/ForgotPassword.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-bJzekFUk.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_GuestLayout-DU5sODOT.js",
+      "_ApplicationLogo-yYwosbvq.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.tsx": {
+    "file": "assets/Login-r2CpJCCC.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_Checkbox-B52UkFSC.js",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_GuestLayout-DU5sODOT.js",
+      "_ApplicationLogo-yYwosbvq.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.tsx": {
+    "file": "assets/Register-DyDmySUn.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_GuestLayout-DU5sODOT.js",
+      "_ApplicationLogo-yYwosbvq.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.tsx": {
+    "file": "assets/ResetPassword-Pu5Jv8tF.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_GuestLayout-DU5sODOT.js",
+      "_ApplicationLogo-yYwosbvq.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.tsx": {
+    "file": "assets/VerifyEmail-CtZvxMR5.js",
+    "name": "VerifyEmail",
+    "src": "resources/js/Pages/Auth/VerifyEmail.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_PrimaryButton-olGBlOKT.js",
+      "_GuestLayout-DU5sODOT.js",
+      "_ApplicationLogo-yYwosbvq.js"
+    ]
+  },
+  "resources/js/Pages/Dashboard.tsx": {
+    "file": "assets/Dashboard-lPCp0Bxx.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Dashboard.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Games/All.tsx": {
+    "file": "assets/All-OXVj9t-r.js",
+    "name": "All",
+    "src": "resources/js/Pages/Games/All.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Games/Partials/GameBox.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Games/Create.tsx": {
+    "file": "assets/Create-D30Z1lxt.js",
+    "name": "Create",
+    "src": "resources/js/Pages/Games/Create.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Games/Partials/CreateGameForm.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "_transition-mkKO62-U.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "resources/js/Pages/Games/Dashboard.tsx": {
+    "file": "assets/Dashboard-bwkqh3eH.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Games/Dashboard.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Games/Edit.tsx": {
+    "file": "assets/Edit-BeYLk7wy.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Games/Edit.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Games/Partials/UpdateGameForm.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "resources/js/Pages/Games/Partials/QuestionBox.tsx",
+      "_Checkbox-B52UkFSC.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "resources/js/Pages/Games/Partials/GameImageUpload.tsx",
+      "resources/js/Pages/Games/Partials/GameImageDisplay.tsx",
+      "_transition-mkKO62-U.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "resources/js/Pages/Games/Home.tsx": {
+    "file": "assets/Home-BRwYbMdh.js",
+    "name": "Home",
+    "src": "resources/js/Pages/Games/Home.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Games/Partials/GameBox.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Games/MyGames.tsx": {
+    "file": "assets/MyGames-Cddpva-1.js",
+    "name": "MyGames",
+    "src": "resources/js/Pages/Games/MyGames.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Games/Partials/GameBox.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Games/Partials/CreateGameForm.tsx": {
+    "file": "assets/CreateGameForm-Dv87GhUK.js",
+    "name": "CreateGameForm",
+    "src": "resources/js/Pages/Games/Partials/CreateGameForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Games/Partials/GameBox.tsx": {
+    "file": "assets/GameBox-Cx0ANM3Q.js",
+    "name": "GameBox",
+    "src": "resources/js/Pages/Games/Partials/GameBox.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Games/Partials/GameImageDisplay.tsx": {
+    "file": "assets/GameImageDisplay-Dhw1f0Xo.js",
+    "name": "GameImageDisplay",
+    "src": "resources/js/Pages/Games/Partials/GameImageDisplay.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Games/Partials/GameImageUpload.tsx": {
+    "file": "assets/GameImageUpload-z7EsvLJe.js",
+    "name": "GameImageUpload",
+    "src": "resources/js/Pages/Games/Partials/GameImageUpload.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "resources/js/Pages/Games/Partials/GameImageDisplay.tsx",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Games/Partials/QuestionBox.tsx": {
+    "file": "assets/QuestionBox-CulBX4dB.js",
+    "name": "QuestionBox",
+    "src": "resources/js/Pages/Games/Partials/QuestionBox.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Games/Partials/UpdateGameForm.tsx": {
+    "file": "assets/UpdateGameForm-CSmCbbR0.js",
+    "name": "UpdateGameForm",
+    "src": "resources/js/Pages/Games/Partials/UpdateGameForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_Checkbox-B52UkFSC.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "resources/js/Pages/Games/Partials/GameImageUpload.tsx",
+      "_transition-mkKO62-U.js",
+      "resources/js/Pages/Games/Partials/GameImageDisplay.tsx"
+    ]
+  },
+  "resources/js/Pages/Games/Play.tsx": {
+    "file": "assets/Play-uJBs66us.js",
+    "name": "Play",
+    "src": "resources/js/Pages/Games/Play.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_PrimaryButton-olGBlOKT.js",
+      "_GameLayout-WRkvIvmF.js",
+      "_transition-mkKO62-U.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "resources/js/Pages/Games/QuestionPlay.tsx": {
+    "file": "assets/QuestionPlay-DD9nRYWu.js",
+    "name": "QuestionPlay",
+    "src": "resources/js/Pages/Games/QuestionPlay.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_GameLayout-WRkvIvmF.js",
+      "resources/js/Pages/Games/Partials/GameImageDisplay.tsx",
+      "_transition-mkKO62-U.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "resources/js/Pages/Games/Questions/Create.tsx": {
+    "file": "assets/Create-CXF4VuCp.js",
+    "name": "Create",
+    "src": "resources/js/Pages/Games/Questions/Create.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "resources/js/Pages/Games/Questions/Partials/CreateQuestionForm.tsx",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "resources/js/Pages/Games/Questions/Partials/CreateChoiceForm.tsx",
+      "_Checkbox-B52UkFSC.js",
+      "_index.esm-CjPt-6xX.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "resources/js/Pages/Games/Questions/Partials/EditChoiceForm.tsx"
+    ]
+  },
+  "resources/js/Pages/Games/Questions/Edit.tsx": {
+    "file": "assets/Edit-DB2KCCkS.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Games/Questions/Edit.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "resources/js/Pages/Games/Questions/Partials/CreateQuestionForm.tsx",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "resources/js/Pages/Games/Questions/Partials/CreateChoiceForm.tsx",
+      "_Checkbox-B52UkFSC.js",
+      "_index.esm-CjPt-6xX.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "resources/js/Pages/Games/Questions/Partials/EditChoiceForm.tsx"
+    ]
+  },
+  "resources/js/Pages/Games/Questions/Partials/CreateChoiceForm.tsx": {
+    "file": "assets/CreateChoiceForm-B6Ph3TBB.js",
+    "name": "CreateChoiceForm",
+    "src": "resources/js/Pages/Games/Questions/Partials/CreateChoiceForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_Checkbox-B52UkFSC.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_index.esm-CjPt-6xX.js"
+    ]
+  },
+  "resources/js/Pages/Games/Questions/Partials/CreateQuestionForm.tsx": {
+    "file": "assets/CreateQuestionForm-CnZtPpWs.js",
+    "name": "CreateQuestionForm",
+    "src": "resources/js/Pages/Games/Questions/Partials/CreateQuestionForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "resources/js/Pages/Games/Questions/Partials/CreateChoiceForm.tsx",
+      "_TextAreaInput-CfRw9ztl.js",
+      "resources/js/Pages/Games/Questions/Partials/EditChoiceForm.tsx",
+      "_transition-mkKO62-U.js",
+      "_Checkbox-B52UkFSC.js",
+      "_index.esm-CjPt-6xX.js"
+    ]
+  },
+  "resources/js/Pages/Games/Questions/Partials/EditChoiceForm.tsx": {
+    "file": "assets/EditChoiceForm-BU9-qFT1.js",
+    "name": "EditChoiceForm",
+    "src": "resources/js/Pages/Games/Questions/Partials/EditChoiceForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_index.esm-CjPt-6xX.js"
+    ]
+  },
+  "resources/js/Pages/Games/Questions/Partials/QuestionPlayedPreview.tsx": {
+    "file": "assets/QuestionPlayedPreview-CTQBobzi.js",
+    "name": "QuestionPlayedPreview",
+    "src": "resources/js/Pages/Games/Questions/Partials/QuestionPlayedPreview.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js"
+    ]
+  },
+  "resources/js/Pages/Games/Score.tsx": {
+    "file": "assets/Score-B-iswXMQ.js",
+    "name": "Score",
+    "src": "resources/js/Pages/Games/Score.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "resources/js/Pages/Games/Questions/Partials/QuestionPlayedPreview.tsx",
+      "_PrimaryButton-olGBlOKT.js",
+      "resources/js/Pages/Games/Partials/GameImageDisplay.tsx",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js",
+      "_InputLabel-7SAgBUys.js"
+    ]
+  },
+  "resources/js/Pages/Games/User.tsx": {
+    "file": "assets/User-CnShbn5c.js",
+    "name": "User",
+    "src": "resources/js/Pages/Games/User.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Games/Partials/GameBox.tsx",
+      "_GameLayout-WRkvIvmF.js",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Home.tsx": {
+    "file": "assets/Home-DyW_ayH1.js",
+    "name": "Home",
+    "src": "resources/js/Pages/Home.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Profile/Edit.tsx": {
+    "file": "assets/Edit-CofAJlqQ.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Profile/Edit.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_GameAuthenticatedLayout-Dth-A3o3.js",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_index-CoSthDYa.js",
+      "_TextInput-C74Pob2z.js",
+      "_PrimaryButton-olGBlOKT.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx": {
+    "file": "assets/DeleteUserForm-Dvl3kq11.js",
+    "name": "DeleteUserForm",
+    "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_transition-mkKO62-U.js",
+      "_index-CoSthDYa.js",
+      "_TextInput-C74Pob2z.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx": {
+    "file": "assets/UpdatePasswordForm-ChRz4JBA.js",
+    "name": "UpdatePasswordForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx": {
+    "file": "assets/UpdateProfileInformationForm-DTpw3KYS.js",
+    "name": "UpdateProfileInformationForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-bJzekFUk.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextInput-C74Pob2z.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/All.tsx": {
+    "file": "assets/All-CRHLDZUB.js",
+    "name": "All",
+    "src": "resources/js/Pages/Shopping/All.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_ShoppingLayout-WWZk-h40.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingBox.tsx",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingOption.tsx",
+      "_PrimaryButton-olGBlOKT.js",
+      "resources/js/Pages/Shopping/Partials/WinnerModal.tsx",
+      "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx"
+    ]
+  },
+  "resources/js/Pages/Shopping/Create.tsx": {
+    "file": "assets/Create-DUaeuJ6S.js",
+    "name": "Create",
+    "src": "resources/js/Pages/Shopping/Create.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Shopping/Partials/CreateShoppingForm.tsx",
+      "_ShoppingLayout-WWZk-h40.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "_transition-mkKO62-U.js",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Edit.tsx": {
+    "file": "assets/Edit-DRE42jPS.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Shopping/Edit.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "resources/js/Pages/Shopping/Partials/UpdateShoppingForm.tsx",
+      "_ShoppingLayout-WWZk-h40.js",
+      "_Checkbox-B52UkFSC.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingImageUpload.tsx",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js",
+      "_transition-mkKO62-U.js",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Home.tsx": {
+    "file": "assets/Home-BW1SqIFP.js",
+    "name": "Home",
+    "src": "resources/js/Pages/Shopping/Home.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_ShoppingLayout-WWZk-h40.js",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/MyList.tsx": {
+    "file": "assets/MyList-B9GxFiOV.js",
+    "name": "MyList",
+    "src": "resources/js/Pages/Shopping/MyList.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_ShoppingLayout-WWZk-h40.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingBox.tsx",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingOption.tsx",
+      "_PrimaryButton-olGBlOKT.js",
+      "resources/js/Pages/Shopping/Partials/WinnerModal.tsx",
+      "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx": {
+    "file": "assets/BuyTicketModa-C9BNcaET.js",
+    "name": "BuyTicketModa",
+    "src": "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_index-pdYXBasi.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_index-CoSthDYa.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/CreateShoppingForm.tsx": {
+    "file": "assets/CreateShoppingForm-BHJLgmPe.js",
+    "name": "CreateShoppingForm",
+    "src": "resources/js/Pages/Shopping/Partials/CreateShoppingForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "_transition-mkKO62-U.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx": {
+    "file": "assets/ImageDeleteModal-0LbWhCxv.js",
+    "name": "ImageDeleteModal",
+    "src": "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/ShoppingBox.tsx": {
+    "file": "assets/ShoppingBox-rfrOYwnO.js",
+    "name": "ShoppingBox",
+    "src": "resources/js/Pages/Shopping/Partials/ShoppingBox.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingOption.tsx",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "resources/js/Pages/Shopping/Partials/WinnerModal.tsx",
+      "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/ShoppingImageUpload.tsx": {
+    "file": "assets/ShoppingImageUpload-XSwpQIYo.js",
+    "name": "ShoppingImageUpload",
+    "src": "resources/js/Pages/Shopping/Partials/ShoppingImageUpload.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "_transition-mkKO62-U.js",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/ShoppingOption.tsx": {
+    "file": "assets/ShoppingOption-BiHfFRAD.js",
+    "name": "ShoppingOption",
+    "src": "resources/js/Pages/Shopping/Partials/ShoppingOption.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_PrimaryButton-olGBlOKT.js",
+      "resources/js/Pages/Shopping/Partials/WinnerModal.tsx",
+      "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/UpdateShoppingForm.tsx": {
+    "file": "assets/UpdateShoppingForm-DW-Yhpzx.js",
+    "name": "UpdateShoppingForm",
+    "src": "resources/js/Pages/Shopping/Partials/UpdateShoppingForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_Checkbox-B52UkFSC.js",
+      "_InputLabel-7SAgBUys.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "_TextAreaInput-CfRw9ztl.js",
+      "_TextInput-C74Pob2z.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingImageUpload.tsx",
+      "_index-pdYXBasi.js",
+      "_transition-mkKO62-U.js",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-CoSthDYa.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/Partials/WinnerModal.tsx": {
+    "file": "assets/WinnerModal-DiBIgg0P.js",
+    "name": "WinnerModal",
+    "src": "resources/js/Pages/Shopping/Partials/WinnerModal.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js"
+    ]
+  },
+  "resources/js/Pages/Shopping/View.tsx": {
+    "file": "assets/View-UuRNZBsX.js",
+    "name": "View",
+    "src": "resources/js/Pages/Shopping/View.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_ShoppingLayout-WWZk-h40.js",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingOption.tsx",
+      "_ShoppingAuthenticatedLayout-xOj-k_Tw.js",
+      "_ApplicationLogo-yYwosbvq.js",
+      "_ResponsiveNavLink-sGAhQPL-.js",
+      "_transition-mkKO62-U.js",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_index-pdYXBasi.js",
+      "_index-CoSthDYa.js",
+      "_PrimaryButton-olGBlOKT.js",
+      "resources/js/Pages/Shopping/Partials/WinnerModal.tsx",
+      "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx"
+    ]
+  },
+  "resources/js/Pages/Welcome.tsx": {
+    "file": "assets/Welcome-DNulH_Ej.js",
+    "name": "Welcome",
+    "src": "resources/js/Pages/Welcome.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-44G_5NsB.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Auth/ConfirmPassword.tsx",
+      "resources/js/Pages/Auth/ForgotPassword.tsx",
+      "resources/js/Pages/Auth/Login.tsx",
+      "resources/js/Pages/Auth/Register.tsx",
+      "resources/js/Pages/Auth/ResetPassword.tsx",
+      "resources/js/Pages/Auth/VerifyEmail.tsx",
+      "resources/js/Pages/Dashboard.tsx",
+      "resources/js/Pages/Games/All.tsx",
+      "resources/js/Pages/Games/Create.tsx",
+      "resources/js/Pages/Games/Dashboard.tsx",
+      "resources/js/Pages/Games/Edit.tsx",
+      "resources/js/Pages/Games/Home.tsx",
+      "resources/js/Pages/Games/MyGames.tsx",
+      "resources/js/Pages/Games/Partials/CreateGameForm.tsx",
+      "resources/js/Pages/Games/Partials/GameBox.tsx",
+      "resources/js/Pages/Games/Partials/GameImageDisplay.tsx",
+      "resources/js/Pages/Games/Partials/GameImageUpload.tsx",
+      "resources/js/Pages/Games/Partials/QuestionBox.tsx",
+      "resources/js/Pages/Games/Partials/UpdateGameForm.tsx",
+      "resources/js/Pages/Games/Play.tsx",
+      "resources/js/Pages/Games/QuestionPlay.tsx",
+      "resources/js/Pages/Games/Questions/Create.tsx",
+      "resources/js/Pages/Games/Questions/Edit.tsx",
+      "resources/js/Pages/Games/Questions/Partials/CreateChoiceForm.tsx",
+      "resources/js/Pages/Games/Questions/Partials/CreateQuestionForm.tsx",
+      "resources/js/Pages/Games/Questions/Partials/EditChoiceForm.tsx",
+      "resources/js/Pages/Games/Questions/Partials/QuestionPlayedPreview.tsx",
+      "resources/js/Pages/Games/Score.tsx",
+      "resources/js/Pages/Games/User.tsx",
+      "resources/js/Pages/Home.tsx",
+      "resources/js/Pages/Profile/Edit.tsx",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx",
+      "resources/js/Pages/Shopping/All.tsx",
+      "resources/js/Pages/Shopping/Create.tsx",
+      "resources/js/Pages/Shopping/Edit.tsx",
+      "resources/js/Pages/Shopping/Home.tsx",
+      "resources/js/Pages/Shopping/MyList.tsx",
+      "resources/js/Pages/Shopping/Partials/BuyTicketModa.tsx",
+      "resources/js/Pages/Shopping/Partials/CreateShoppingForm.tsx",
+      "resources/js/Pages/Shopping/Partials/ImageDeleteModal.tsx",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingBox.tsx",
+      "_ShoppingImageDisplay-DvnTeReQ.js",
+      "resources/js/Pages/Shopping/Partials/ShoppingImageUpload.tsx",
+      "resources/js/Pages/Shopping/Partials/ShoppingOption.tsx",
+      "resources/js/Pages/Shopping/Partials/UpdateShoppingForm.tsx",
+      "resources/js/Pages/Shopping/Partials/WinnerModal.tsx",
+      "resources/js/Pages/Shopping/View.tsx",
+      "resources/js/Pages/Welcome.tsx"
+    ],
+    "css": [
+      "assets/app-DmLnRwBl.css"
+    ]
+  }
+}

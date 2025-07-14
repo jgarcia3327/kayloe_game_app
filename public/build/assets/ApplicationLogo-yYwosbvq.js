@@ -1,0 +1,1 @@
+import{j as s}from"./app-44G_5NsB.js";function o(t){return s.jsxs("h1",{className:"font-thin text-3xl",children:["[",s.jsx("span",{className:"text-2xl",children:"CebuShopping"}),"]"]})}export{o as A};

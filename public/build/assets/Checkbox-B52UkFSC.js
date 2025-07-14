@@ -1,0 +1,1 @@
+import{j as e}from"./app-44G_5NsB.js";function t({className:o="",...r}){return e.jsx("input",{...r,type:"checkbox",className:o+" rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"})}export{t as C};

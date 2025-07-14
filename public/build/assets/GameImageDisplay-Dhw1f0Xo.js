@@ -1,0 +1,1 @@
+import{j as e}from"./app-44G_5NsB.js";function m({game:s}){return e.jsx(e.Fragment,{children:s.image&&e.jsx("div",{className:"flex items-center justify-center",children:e.jsx("img",{className:"object-scale-down rounded-md max-w-3xl gap-4",src:"/storage/assets/images/games/"+s.image})})})}export{m as default};
